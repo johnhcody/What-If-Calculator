@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./dist/main.css" />
     <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="./src/scripts/calculator.js"></script>
+    <script src="./src/scripts/graph.js"></script>
+    <script src="./src/index.js"></script>
     <title>What If</title>
 </head>
 <body>
@@ -24,7 +27,7 @@
     </div>
     <div class="body-wrapper">
         <div class="form-wrapper">
-            <form class="input-form" action="">
+            <form id="input-form" action="">
                 <label for="habits">Choose a Habit</label>
                 <select id="habits" name="habits">
                     <option value="make-coffee">Make Coffee at Home</option>
@@ -43,8 +46,9 @@
                 <button type="submit">Create Graph</button>
             </form>
         </div>
-        <div class="graph">
+        <div id="graph">
             <h1>graph</h1>
+            <svg></svg>
         </div>
         <div class="result-form-wrapper">
             <div class="right-bar">
