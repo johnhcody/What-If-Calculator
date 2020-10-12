@@ -1,0 +1,71 @@
+.top-header {
+    display: flex;
+    p {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+}
+
+.about-me {
+    width: 20%
+}
+
+.heading-info {
+    width: 80%;
+}
+
+.form-wrapper {
+    width: 25%
+}
+
+.input-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    input {
+        margin: 5px 0px 5px 0px;
+    }
+    label {
+        margin: 5px 0px 5px 0px;
+    }
+    button {
+        margin: 5px 0px 5px 0px;
+    }
+    input[type=number] {
+        max-width: 50px;
+    }
+}
+
+.body-wrapper {
+    display: flex;
+    padding-top: 20px;
+}
+
+.graph {
+    height: 500px;
+    width: 50%;
+    background-color: pink;
+}
+
+.result-form-wrapper {
+    width: 25%;
+}
+
+.right-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    h1 {
+        margin: 5px 0px 5px 0px;
+    }
+    h2 {
+        margin: 5px 0px 5px 0px;
+    }
+    button {
+        max-width: 50%;
+        margin: 5px 0px 5px 0px;
+    }
+}
