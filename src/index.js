@@ -1,7 +1,5 @@
 const reset = require('./styles/reset.scss');
 const style = require('./styles/index.scss'); 
-
-
 const Calculator = require("./scripts/calculator");
 const Graph = require("./scripts/graph");
 
@@ -14,7 +12,7 @@ const Graph = require("./scripts/graph");
 
 
 const form = document.getElementById('input-form');
-
+console.log(form);
 form.addEventListener('submit', (e) => {
     debugger
     // handle the form data
@@ -22,7 +20,7 @@ form.addEventListener('submit', (e) => {
 
     form.addEventListener('formdata', (e) => {
         let data = e.formData;
-        console.log(data);
+        console.log(...data);
     })
 
 });

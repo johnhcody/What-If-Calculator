@@ -1,13 +1,13 @@
 //const { ContextReplacementPlugin } = require("webpack");
 
-function Calculator(rate, time, cont) {
+function calculator(rate, time, cont) {
     this.rate = rate;
     this.time = time;
     this.cont = cont;
 }    
 // makes an array of objects w/ a key of year and yeild
 
-Calculator.prototype.makeArr = function makeArr(rate, time, cont) {
+calculator.prototype.makeArr = function makeArr(rate, time, cont) {
     rate = (rate / 100) + 1;
     let result = [];
     let i = 0;
@@ -23,7 +23,7 @@ Calculator.prototype.makeArr = function makeArr(rate, time, cont) {
     return result;
 }
 
-Calculator.prototype.calcTotalWithInterest = function calcTotalWithInterest(rate, time, cont) {
+calculator.prototype.calcTotalWithInterest = function calcTotalWithInterest(rate, time, cont) {
     rate = (rate / 100) + 1;
     let i = 0;
     let accrual;
@@ -34,7 +34,7 @@ Calculator.prototype.calcTotalWithInterest = function calcTotalWithInterest(rate
     return accrual.toFixed(2);
 }
 
-Calculator.prototype.calcTotalWithoutInterest = function calcTotalWithoutInterest(rate, time, cont) {
+calculator.prototype.calcTotalWithoutInterest = function calcTotalWithoutInterest(rate, time, cont) {
     return time * cont;
 }
 
@@ -80,7 +80,4 @@ Calculator.prototype.calcTotalWithoutInterest = function calcTotalWithoutInteres
 //     }
 //     return obj;
 // }
-
-
-
-modules.exports = Calculator;
+module.exports(calculator);
