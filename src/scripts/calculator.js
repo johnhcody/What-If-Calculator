@@ -37,9 +37,8 @@ export default class Calculator {
                 this.cont = 0;
         }
         this.findAccrual();
-        // this.calcTotalWithInterest();
-        // this.calcTotalWithoutInterest();
-
+        this.calcTotalWithInterest();
+        this.calcTotalWithoutInterest();
     }
 
 
@@ -70,24 +69,26 @@ export default class Calculator {
     }
     
     calcTotalWithInterest() {
-        let decRate = (this.rate / 100) + 1;
-        let i = 0;
-        let accrual;
-        while (i < this.time) {
-            if (i === 0) {
-                accrual = (this.cont * decRate)
-            } else {
-                accrual = ((this.cont * decRate) + (accrual * decRate));
-            }
-            i += 1;
-        }
-        this['totalWithInterest'] = accrual.toFixed(2);
-        console.log(accrual.toFixed(2));
+        // let decRate = (this.rate / 100) + 1;
+        // let i = 0;
+        // let accrual;
+        // while (i < this.time) {
+        //     if (i === 0) {
+        //         accrual = (this.cont * decRate)
+        //     } else {
+        //         accrual = ((this.cont * decRate) + (accrual * decRate));
+        //     }
+        //     i += 1;
+        // }
+        this['totalWithInterest'] = parseFloat(this.time[this.time.length - 1].accrual)
+        debugger
+        // this['totalWithInterest'] = accrual.toFixed(2);
+        // console.log(accrual.toFixed(2));
     }
     
     calcTotalWithoutInterest() {
-        console.log(this.time * this.cont);
-        this['totalWithoutInterest'] = (this.time * this.cont);
+        //console.log(this.time * this.cont);
+        this['totalWithoutInterest'] = (this.time.length * this.cont);
     }
     
 }    

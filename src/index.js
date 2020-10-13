@@ -79,7 +79,14 @@ function makeArr(e) {
         return new Calculator(obj)
         })
     console.log('result')
-    console.log(result);
+    console.log(result)
+    // console.log('result')
+    // console.log(result);
+    const graph = new Graph({
+        element: document.querySelector('#graph-wrapper'),
+        data: result
+    })
+
     // debugger
     // debugger
 

@@ -3,17 +3,22 @@
 //import { calculator } from './calculator';
 
 export default class Graph {
-    constructor(arr) {
-        this.margin = {top: 20, right: 20, bottom: 20, left: 20};
-        this.width = 600 - this.margin.left - this.margin.right; 
-        this.height = 500 - this.margin.top - this.margin.bottom;
-        this.arr = arr;
+    constructor(obj) {
+        this.element = obj.element;
+        this.data = obj.data;
         this.makeGraph();
     }
-         
-        makeGraph() {
-            console.log('from graph.js..this is how you need the data')
-            console.log(this.arr);
+    
+    makeGraph() {
+            this.margin = {top: 20, right: 20, bottom: 20, left: 20};
+            this.width = 600 - this.margin.left - this.margin.right; 
+            this.height = 500 - this.margin.top - this.margin.bottom;
+
+            this.element.innerHTML = '';
+            const svg = d3.select(this.element).append('svg');
+            svg.attr('width', this.width);
+            svg.attr('height', this.height);
+            svg.append('g')
         }
         
 }
