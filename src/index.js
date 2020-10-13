@@ -28,8 +28,8 @@ const submission = document.getElementById('input-form')
 
 
 if (submission) {
-    console.log('anything');
     submission.addEventListener('submit', makeArr)
+    console.log('anything');
 }
 
 function makeArr(e) {
