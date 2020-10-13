@@ -15,21 +15,50 @@
 //     new Calculator(game, ctx).start();
 // });
 
+import './styles/reset.scss';
+import './styles/index.scss';
+import Calculator from './scripts/calculator';
+import Graph from './scripts/graph';
 
+window.addEventListener('DOMContentLoaded', (event) => {
+    console.log('DOM fully loaded and parsed');
+});
+
+const submission = document.getElementById('input-form')
+
+
+if (submission) {
+    console.log('anything');
+    submission.addEventListener('submit', makeArr)
+}
 
 function makeArr(e) {
     e.preventDefault();
-    form = e.currentTarget;
-    console.log(...form);
-} 
-
-const form  = document.querySelector('#input-form')
-
-if (form) {
-    console.log(form);
-    console.log(...form);
-    addEventListener('submit', makeArr)
+    const data = e.currentTarget;
+    console.log('hello from makeArr')
+    console.log(...data);
 }
+
+
+
+
+
+
+
+
+// function makeArr(e) {
+//     e.preventDefault();
+//     form = e.currentTarget;
+//     console.log(...form);
+// } 
+
+// const form  = document.querySelector('#input-form')
+
+// if (form) {
+//     console.log(form);
+//     console.log(...form);
+//     addEventListener('submit', makeArr)
+// }
 
 // const form = document.getElementById('input-form');
 // console.log(form);
