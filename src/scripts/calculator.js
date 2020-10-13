@@ -40,7 +40,6 @@ export default class Calculator {
         this.calcTotalWithInterest();
         this.calcTotalWithoutInterest();
 
-        //let graph = new Graph()
     }
 
 
@@ -62,6 +61,8 @@ export default class Calculator {
             i += 1;
         }
         console.log(result);
+        let graph = new Graph(result)
+
         // send result to graph.js
     }
     
