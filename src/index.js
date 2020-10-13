@@ -1,7 +1,9 @@
-const reset = require('./styles/reset.scss');
-const style = require('./styles/index.scss'); 
-const Calculator = require("./scripts/calculator");
-const Graph = require("./scripts/graph");
+// const reset = require('./styles/reset.scss');
+// const style = require('./styles/index.scss'); 
+import Graph from '../src/scripts/graph';
+import Calculator from '../src/scripts/calculator';
+// const Calculator = require("./scripts/calculator");
+// const Graph = require("./scripts/graph");
 
 // document.addEventListener("DOMContentLoaded", function () {
 //     const graph = document.getElementsById("");

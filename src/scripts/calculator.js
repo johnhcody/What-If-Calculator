@@ -38,6 +38,7 @@ calculator.prototype.calcTotalWithoutInterest = function calcTotalWithoutInteres
     return time * cont;
 }
 
+module.exports(calculator);
     
 //assumes contributions are made at the start of each compounding period
 
@@ -80,4 +81,3 @@ calculator.prototype.calcTotalWithoutInterest = function calcTotalWithoutInteres
 //     }
 //     return obj;
 // }
-module.exports(calculator);
