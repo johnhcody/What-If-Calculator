@@ -1,48 +1,48 @@
-//const { ContextReplacementPlugin } = require("webpack");
-
-function calculator(rate, time, cont) {
-    this.rate = rate;
-    this.time = time;
-    this.cont = cont;
-}    
-// makes an array of objects w/ a key of year and yeild
-
-calculator.prototype.makeArr = function makeArr(rate, time, cont) {
-    rate = (rate / 100) + 1;
-    let result = [];
-    let i = 0;
-    let accrual;
-    while (i < time) {
-        accrual = ((cont * rate) + (accrual * rate));
-        result[i] = {
-            year: i + 1,
-            accrual: accrual.toFixed(2)
-        }
-        i += 1;
+class Calculator {
+    constructor(rate, time, cont) {
+        this.rate = rate;
+        this.time = time;
+        this.cont = cont;
     }
-    return result;
-}
-
-calculator.prototype.calcTotalWithInterest = function calcTotalWithInterest(rate, time, cont) {
-    rate = (rate / 100) + 1;
-    let i = 0;
-    let accrual;
-    while (i < time) {
-        accrual = ((cont * rate) + (accrual * rate));
-        i += 1;
-    }
-    return accrual.toFixed(2);
-}
-
-calculator.prototype.calcTotalWithoutInterest = function calcTotalWithoutInterest(rate, time, cont) {
-    return time * cont;
-}
-
-module.exports(calculator);
+    // makes an array of objects w/ a key of year and yeild
     
-//assumes contributions are made at the start of each compounding period
+    makeArr() {
+        let decRate = (this.rate / 100) + 1;
+        let result = [];
+        let i = 0;
+        let accrual;
+        while (i < this.time) {
+            accrual = ((this.cont * decRate) + (accrual * decRate));
+            result[i] = {
+                year: i + 1,
+                accrual: accrual.toFixed(2)
+            }
+            i += 1;
+        }
+        return result;
+    }
+    
+    calcTotalWithInterest() {
+        let decRate = (decRate / 100) + 1;
+        let i = 0;
+        let accrual;
+        while (i < this.time) {
+            accrual = ((this.cont * decRate) + (accrual * decRate));
+            i += 1;
+        }
+        return accrual.toFixed(2);
+    }
+    
+    calcTotalWithoutInterest() {
+        return this.time * this.cont;
+    }
+    
+}    
 
-// calcIntYrBegin(rate, time, cont) {
+    
+    //assumes contributions are made at the start of each compounding period
+    
+    // calcIntYrBegin(rate, time, cont) {
 //     rate = (rate / 100) + 1;
 //     let i = 0;
 //     let accrual;

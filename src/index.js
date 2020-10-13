@@ -1,7 +1,7 @@
 // const reset = require('./styles/reset.scss');
 // const style = require('./styles/index.scss'); 
-import Graph from '../src/scripts/graph';
-import Calculator from '../src/scripts/calculator';
+// import Graph from '../src/scripts/graph.js';
+// import Calculator from '../src/scripts/calculator.js';
 // const Calculator = require("./scripts/calculator");
 // const Graph = require("./scripts/graph");
 
