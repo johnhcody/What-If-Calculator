@@ -32,30 +32,74 @@ if (submission) {
     submission.addEventListener('submit', makeObj)
 }
 
+// function makeObj(e) {
+//     e.preventDefault();
+//     const data = new FormData(submission)
+//     //const data = e.currentTarget;
+//     //console.log(...data);
+//     let result = [];
+//     for (const [key, value] of data.entries()) {
+//         let obj = {}
+//         //console.log(key, value);
+//         if (key === 'rate' || key === 'time') {
+//             obj[key] = parseInt(value)
+//         } else {
+//             obj[key] = value;
+//         }
+//         console.log(obj);
+//         result.push(obj);
+//     }
+//     console.log(result);
+//     // new Calculator(obj);
+// }
+
+
+
 function makeObj(e) {
     e.preventDefault();
     const data = new FormData(submission)
     //const data = e.currentTarget;
     //console.log(...data);
     let result = [];
-    for (const [key, value] of data.entries()) {
-        let obj = {}
-        //console.log(key, value);
-        if (key === 'rate' || key === 'time') {
-            obj[key] = parseInt(value)
-        } else {
-            obj[key] = value;
-        }
-        console.log(obj);
-        result.push(obj);
+    let obj = {}
+    let habits = data.getAll('habit')
+    //debugger
+    let i = 0;
+    while (i < habits.length) {
+        habits.forEach(habit => {
+            result[i] = {
+                habit: habit,
+                rate: parseInt(data.get('rate')),
+                time: parseInt(data.get('time'))
+            }
+            // obj['habit'] = habit;
+            // obj['rate'] = parseInt(data.get('rate'));
+            // obj['time'] = parseInt(data.get('time'));
+            // result[i] = obj;
+            i += 1;
+            debugger
+        })
+        debugger
     }
-    console.log(result);
-    // new Calculator(obj);
+
+
+    // for (const [key, value] of data.entries()) {
+    //     //console.log(key, value);
+    //     debugger
+    //     if (key === 'rate' || key === 'time') {
+    //         obj[key] = parseInt(value)
+    //     } else {
+    //         obj[key] = value;
+    //     }
+    //     //debugger
+    //     if (Object.keys(obj).length === 3) {
+    //         result.push(obj)
+    //     }
+    // }
+    //console.log(obj);
+    //new Calculator(obj);
+    //console.log(result);
 }
-
-
-
-
 
 
 
