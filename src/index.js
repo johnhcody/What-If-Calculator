@@ -61,7 +61,6 @@ function makeObj(e) {
     //const data = e.currentTarget;
     //console.log(...data);
     let result = [];
-    let obj = {}
     let habits = data.getAll('habit')
     //debugger
     let i = 0;
@@ -72,14 +71,10 @@ function makeObj(e) {
                 rate: parseInt(data.get('rate')),
                 time: parseInt(data.get('time'))
             }
-            // obj['habit'] = habit;
-            // obj['rate'] = parseInt(data.get('rate'));
-            // obj['time'] = parseInt(data.get('time'));
-            // result[i] = obj;
             i += 1;
-            debugger
+            // debugger
         })
-        debugger
+        // debugger
     }
 
 
