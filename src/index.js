@@ -36,17 +36,20 @@ function makeObj(e) {
     e.preventDefault();
     const data = new FormData(submission)
     //const data = e.currentTarget;
-    console.log(...data);
-    // let obj = {}
-    // for (const [key, value] of data.entries()) {
-    //     //console.log(key, value);
-    //     if (key === 'rate' || key === 'time') {
-    //         obj[key] = parseInt(value)
-    //     } else {
-    //         obj[key] = value;
-    //     }
-    // }
-    // console.log(obj);
+    //console.log(...data);
+    let result = [];
+    for (const [key, value] of data.entries()) {
+        let obj = {}
+        //console.log(key, value);
+        if (key === 'rate' || key === 'time') {
+            obj[key] = parseInt(value)
+        } else {
+            obj[key] = value;
+        }
+        console.log(obj);
+        result.push(obj);
+    }
+    console.log(result);
     // new Calculator(obj);
 }
 
