@@ -49,16 +49,41 @@
     <div class="body-wrapper">
         <div class="form-wrapper">
             <form id="input-form" action="">
-                <label for="habit">Choose a Habit</label>
-                <select id="habit" name="habit">
-                    <option value="coffee">Make Coffee at Home</option>
-                    <option value="hair">Cut Your Own Hair</option>
+                <h1>Select A habit</h1>
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="coffee" name="habit" value="coffee">
+                        <label for="coffee"> Make Coffee at Home</label>
+                    </div>
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="hair" name="hair" value="hair">
+                        <label for="hair">Cut your own Hair</label>
+                    </div>
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="lunch" name="habit" value="lunch">
+                        <label for="lunch">Make Lunch at Home</label>
+                    </div>
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="cable" name="habit" value="cable">
+                        <label for="cable">Replace Cable with Streaming</label>
+                    </div>
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="save" name="habit" value="save">
+                        <label for="save">Save $100/month</label>
+                    </div>
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="bike" name="habit" value="bike">
+                        <label for="bike">Bike to work</label>
+                    </div>
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="generic" name="habit" value="generic">
+                        <label for="generic">Replace Name Brands with Generic</label>
+                    </div>
+                    <!-- <option value="hair">Cut Your Own Hair</option>
                     <option value="lunch">Make Lunch at Home</option>
                     <option value="cable">Replace Cable with Streaming</option>
                     <option value="save">Save $100/month</option>
                     <option value="bike">Bike to work</option>
-                    <option value="generic">Replace Generic with Name Brands</option>
-                </select>
+                    <option value="generic">Replace Generic with Name Brands</option> -->
                 <label for="rate">Interest Rate (between 0 and 20):</label>
                     <input type="number" id="rate" name="rate" min="0" max="20">
                 <label for="time">Years (between 1 and 100):</label>
