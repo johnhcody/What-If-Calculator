@@ -20,23 +20,30 @@ import './styles/index.scss';
 import Calculator from './scripts/calculator';
 import Graph from './scripts/graph';
 
-window.addEventListener('DOMContentLoaded', (event) => {
-    console.log('DOM fully loaded and parsed');
-});
+// testing
+// window.addEventListener('DOMContentLoaded', (event) => {
+//     console.log('DOM fully loaded and parsed');
+// });
 
 const submission = document.getElementById('input-form')
 
 
 if (submission) {
-    submission.addEventListener('submit', makeArr)
-    console.log('anything');
+    submission.addEventListener('submit', makeObj)
 }
 
-function makeArr(e) {
+function makeObj(e) {
     e.preventDefault();
-    const data = e.currentTarget;
-    console.log('hello from makeArr')
+    const data = new FormData(submission)
+    //const data = e.currentTarget;
     console.log(...data);
+    let obj = {}
+    for (const [key, value] of data.entries()) {
+        //console.log(key, value);
+        obj[key] = value;
+    }
+    console.log(obj);
+    
 }
 
 
