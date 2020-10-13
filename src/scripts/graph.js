@@ -10,7 +10,7 @@ export default class Graph {
         this.arr = arr;
         this.makeGraph();
     }
-        
+         
         makeGraph() {
             console.log('from graph.js..this is how you need the data')
             console.log(this.arr);
