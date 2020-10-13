@@ -36,14 +36,14 @@ export default class Calculator {
             default:
                 this.cont = 0;
         }
-        this.makeArr();
-        this.calcTotalWithInterest();
-        this.calcTotalWithoutInterest();
+        this.findAccrual();
+        // this.calcTotalWithInterest();
+        // this.calcTotalWithoutInterest();
 
     }
 
 
-    makeArr() {
+    findAccrual() {
         let decRate = (this.rate / 100) + 1;
         let result = [];
         let i = 0;
@@ -60,9 +60,12 @@ export default class Calculator {
             }
             i += 1;
         }
-        console.log(result);
-        let graph = new Graph(result)
-
+        //console.log(result);
+        //let graph = new Graph(result)
+        this.time = result;
+        console.log(this);
+        const that = this;
+        return that;
         // send result to graph.js
     }
     
@@ -78,11 +81,13 @@ export default class Calculator {
             }
             i += 1;
         }
+        this['totalWithInterest'] = accrual.toFixed(2);
         console.log(accrual.toFixed(2));
     }
     
     calcTotalWithoutInterest() {
         console.log(this.time * this.cont);
+        this['totalWithoutInterest'] = (this.time * this.cont);
     }
     
 }    

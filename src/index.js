@@ -18,6 +18,7 @@
 import './styles/reset.scss';
 import './styles/index.scss';
 import Calculator from './scripts/calculator';
+import { defineContribution } from './scripts/calculator';
 import Graph from './scripts/graph';
 
 // testing
@@ -29,7 +30,7 @@ const submission = document.getElementById('input-form')
 
 
 if (submission) {
-    submission.addEventListener('submit', makeObj)
+    submission.addEventListener('submit', makeArr)
 }
 
 // function makeObj(e) {
@@ -55,14 +56,13 @@ if (submission) {
 
 
 
-function makeObj(e) {
+function makeArr(e) {
     e.preventDefault();
     const data = new FormData(submission)
     //const data = e.currentTarget;
     //console.log(...data);
     let result = [];
     let habits = data.getAll('habit')
-    //debugger
     let i = 0;
     while (i < habits.length) {
         habits.forEach(habit => {
@@ -70,13 +70,21 @@ function makeObj(e) {
                 habit: habit,
                 rate: parseInt(data.get('rate')),
                 time: parseInt(data.get('time'))
+                // time needs to be an array of objects year: 1, accrual: num
             }
             i += 1;
-            // debugger
         })
-        // debugger
     }
+    result = result.map(obj => {
+        return new Calculator(obj)
+        })
+    console.log('result')
+    console.log(result);
+    // debugger
+    // debugger
 
+    // with doo something like new Graph(result)
+}
 
     // for (const [key, value] of data.entries()) {
     //     //console.log(key, value);
@@ -94,7 +102,7 @@ function makeObj(e) {
     //console.log(obj);
     //new Calculator(obj);
     //console.log(result);
-}
+
 
 
 
