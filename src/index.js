@@ -78,8 +78,6 @@ function makeArr(e) {
     result = result.map(obj => {
         return new Calculator(obj)
         })
-    console.log('result')
-    console.log(result)
     // console.log('result')
     // console.log(result);
     const graph = new Graph({

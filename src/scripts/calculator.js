@@ -62,7 +62,6 @@ export default class Calculator {
         //console.log(result);
         //let graph = new Graph(result)
         this.time = result;
-        console.log(this);
         const that = this;
         return that;
         // send result to graph.js
@@ -81,7 +80,7 @@ export default class Calculator {
         //     i += 1;
         // }
         this['totalWithInterest'] = parseFloat(this.time[this.time.length - 1].accrual)
-        debugger
+        // debugger
         // this['totalWithInterest'] = accrual.toFixed(2);
         // console.log(accrual.toFixed(2));
     }
