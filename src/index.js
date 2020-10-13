@@ -40,10 +40,14 @@ function makeObj(e) {
     let obj = {}
     for (const [key, value] of data.entries()) {
         //console.log(key, value);
-        obj[key] = value;
+        if (key === 'rate' || key === 'time') {
+            obj[key] = parseInt(value)
+        } else {
+            obj[key] = value;
+        }
     }
     console.log(obj);
-    
+    new Calculator(obj);
 }
 
 

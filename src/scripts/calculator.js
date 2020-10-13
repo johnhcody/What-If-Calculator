@@ -1,3 +1,5 @@
+import Graph from './graph.js';
+
 export default class Calculator {
     constructor(obj) {
         this.rate = obj.rate;
@@ -37,6 +39,8 @@ export default class Calculator {
         this.makeArr();
         this.calcTotalWithInterest();
         this.calcTotalWithoutInterest();
+
+        //let graph = new Graph()
     }
 
 
@@ -46,14 +50,19 @@ export default class Calculator {
         let i = 0;
         let accrual;
         while (i < this.time) {
-            accrual = ((this.cont * decRate) + (accrual * decRate));
+            if (i === 0) {
+                accrual = (this.cont * decRate)
+             } else {
+                accrual = ((this.cont * decRate) + (accrual * decRate));
+            }    
             result[i] = {
                 year: i + 1,
                 accrual: accrual.toFixed(2)
             }
             i += 1;
         }
-        console.log(makeArr);
+        console.log(result);
+        // send result to graph.js
     }
     
     calcTotalWithInterest() {
@@ -61,7 +70,11 @@ export default class Calculator {
         let i = 0;
         let accrual;
         while (i < this.time) {
-            accrual = ((this.cont * decRate) + (accrual * decRate));
+            if (i === 0) {
+                accrual = (this.cont * decRate)
+            } else {
+                accrual = ((this.cont * decRate) + (accrual * decRate));
+            }
             i += 1;
         }
         console.log(accrual.toFixed(2));
