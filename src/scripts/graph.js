@@ -3,6 +3,7 @@
 //import { calculator } from './calculator';
 
 import * as d3 from 'd3';
+import * as d3scale from 'd3-scale';
 
 export default class Graph {
     constructor(obj) {
@@ -27,13 +28,13 @@ export default class Graph {
             svg.attr('width', this.width);
             svg.attr('height', this.height);
             // going with a new strategy
-            const gSvg = svg.append('g')
-                .attr('transform', `translate(${this.margin.left}, ${this.margin.top})`);
+            // const gSvg = svg.append('g')
+            //     .attr('transform', `translate(${this.margin.left}, ${this.margin.top})`);
             // const newSvg = svg.append("g").attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
             // debugger
         const subgroups = Object.keys(this.data[0]).slice(1) // subgroups is good
         const groups = Array.from(Array(this.data.length).keys()).slice(1).map(n => n.toString()) // groups is an array of integers representing each year 
-        const obj = d3.map(graphData, function (d) { return (d.year) })   //obj should be ok
+        const obj = d3.map(graphData, function (d) { return (d.year) })   // obj should be ok
         debugger
 
         const x = d3.scaleBand()
@@ -58,6 +59,9 @@ export default class Graph {
             .keys(subgroups)
             (graphData)
         
+        const xScale = d3.scaleBand().rangeRound([0, this.width]).padding(0.1);
+
+        const yScale = d3.scaleLinear().domain([0, (this.totalWithInterest + (this.totalWithInterest * 0.1))]).range([this.height, 0])
         
         // from bc_example.html... will try a new approach
         debugger
@@ -73,8 +77,8 @@ export default class Graph {
             .enter().append("rect")
             .attr("x", function (d) { return x(d.year); })
             .attr("y", function (d) { return y(d[1]); })
-            .attr("height", function (d) { return y(d[0]) - y(d[1]); })
-            .attr("width", x.bandwidth())
+            .attr("height", (d) => yScale(d.value))
+            .attr("width", xScale.bandwidth())
 
         // d3.select("svg").selectAll("g.bar")
         //     .data(stackedData) // Pass the sorted data in
