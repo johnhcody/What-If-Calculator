@@ -14,11 +14,6 @@ export default class Graph {
     }
     
     makeGraph() {
-            const svgData = this.data;
-            
-            // debugger
-            //const series = d3.stack().keys(this.data[this.data.length - 1])(graphData)
-        
 
         // DIMENSIONS
             this.margin = {top: 20, right: 20, bottom: 20, left: 60};
@@ -36,10 +31,6 @@ export default class Graph {
             .attr("transform", 
                 "translate(" + this.margin.left + "," + this.margin.top + ")");
 
-        // const gSvg = svg.append("g")
-        //     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-
         // FORMATING DATA
         const graphData = this.data.slice(0, this.data.length - 1); // graphData is an array of objects.  {year: 1, hair: 91, coffee: 120}, {year: 2, hair: 200, coffee: 320}, etc
         const subgroups = Object.keys(this.data[0]).slice(1) // subgroups is an array of the different habits selected
@@ -51,10 +42,6 @@ export default class Graph {
             .keys(subgroups)
             (graphData)
         // stackedData is necessary to put bars on top of each other.
-        // debugger
-        
-        
-        
         
         // AXES
 
@@ -72,23 +59,10 @@ export default class Graph {
             .range([this.height, 0]);
         svg.append("g")
             .call(d3.axisLeft(y));
-        // debugger
         const color = d3.scaleOrdinal()
             .domain(subgroups)
             .range(['#e41a1c', '#377eb8', '#4daf4a', '#00e9ff', '#905caa', '#f8ff35', '4cff00'])
         
-
-        // using xScale
-        // const xScale = d3.scaleBand()
-        //     .domain(groups)
-        //     .range([0, this.width])
-        //     .padding(0.1);
-
-        // const yScale = d3.scaleLinear()
-        //     .domain([0, (this.totalWithInterest + (this.totalWithInterest * 0.1))])
-        //     .range([this.height, 0])
-        
-        // from bc_example.html... will try a new approach
         debugger
         svg.append("g")
             .selectAll("g")
@@ -104,31 +78,7 @@ export default class Graph {
                 .attr("y", function (d) { return y(d[1]); })
                 .attr("height", function (d) { return y(d[0]) - y(d[1]); })
                 .attr("width", x.bandwidth())
-            // .attr("x", 25)
-            // .attr("y", this.totalWithInterest)
-            // .attr("x", function (d) { return x(d.year); })
-            // .attr("y", function (d) { return y(d[1]); })
-            // .attr('x', 300)
-            // .attr('y', 100)
-            // .attr("width", 50)
-            // .attr("height", 100)
 
-        // d3.select("svg").selectAll("g.bar")
-        //     .data(stackedData) // Pass the sorted data in
-        //     .enter()
-        //     .append("g")
-        //     .attr("class", "bar")
-        //     .each(function (d) {
-        //         d3.select(this).selectAll("rect")
-        //             .data(d)
-        //             .enter()
-        //             .append("rect")
-        //             .attr("width", 40)
-        //             .attr("height", p => y(p[1]) - y(p[0]))
-        //             .attr("x", (p, i) => x(i) + 25)
-        //             .attr("y", p => y(p[1]))
-        //             .style("fill", color(d.key)) 
-            // })
         }
 }
 
