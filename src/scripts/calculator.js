@@ -61,16 +61,14 @@ export default class Calculator {
             // this[key] = parseFloat(accrual);
             i += 1;
         }
-
+        this.calcTotalWithoutInterest(cont);
         return this[key] = parseFloat(parseFloat(accrual.toFixed(2)));
     }
     
-    calcTotalWithInterest() {
-                }
-                
-    calcTotalWithoutInterest() {
+    calcTotalWithoutInterest(cont) {
         //console.log(this.time * this.cont);
-        this['totalWithoutInterest'] = (this.time.length * this.cont);
+        debugger
+        this['totalWithoutInterest'] = (this.year * cont);
     }
     
 }    

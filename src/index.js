@@ -112,9 +112,12 @@ function makeGraphArr(e) {
     
     result = result.map(obj => {
         // debugger
+        
         const calc = new Calculator(obj)
         delete calc['columns']
         delete calc['rate']
+        //let noInt = calc['totalWithoutInterest']
+        delete calc['totalWithoutInterest']
         //calc['year'] = `Year ${calc['year']}`
         return calc
         })
@@ -123,7 +126,14 @@ function makeGraphArr(e) {
     // debugger
     const add = (a, b) => a + b;
     // debugger
+    //const totalWithoutInterest = noInt;
     const totalWithInterest = parseInt(Object.values(result[result.length - 1]).reduce(add)) - result[result.length - 1].year
+    debugger
+    // const totalWithoutInterest;
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+    document.getElementById("int").innerHTML = `$ ${numberWithCommas(totalWithInterest)}`;
     result.push(['year'].concat(habits))
     // debugger
     const graph = new Graph({
