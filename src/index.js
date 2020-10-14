@@ -83,7 +83,7 @@ function makeArr(e) {
     // console.log(result);
     debugger
     const graph = new Graph({
-        element: document.querySelector('#graph-wrapper'),
+        element: document.getElementById('graph-wrapper'),
         data: result
     })
 }

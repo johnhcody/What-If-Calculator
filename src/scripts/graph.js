@@ -15,57 +15,76 @@ export default class Graph {
     
     makeGraph() {
             const svgData = this.data;
-            const graphData = this.data.slice(0, this.data.length - 1);
-            debugger
-            const series = d3.stack().keys(this.data[this.data.length - 1])(graphData)
+            
+            // debugger
+            //const series = d3.stack().keys(this.data[this.data.length - 1])(graphData)
+        
 
+        // DIMENSIONS
             this.margin = {top: 20, right: 20, bottom: 20, left: 20};
             this.width = 600 - this.margin.left - this.margin.right; 
             this.height = 500 - this.margin.top - this.margin.bottom;
-
             this.element.innerHTML = '';
-            const svg = d3.select(this.element).append('svg');  // before svg was const svg, changed to this to have access to it in addAxes()
-            svg.attr('width', this.width);
-            svg.attr('height', this.height);
-            // going with a new strategy
-            // const gSvg = svg.append('g')
-            //     .attr('transform', `translate(${this.margin.left}, ${this.margin.top})`);
-            // const newSvg = svg.append("g").attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
-            // debugger
-        const subgroups = Object.keys(this.data[0]).slice(1) // subgroups is good
+
+
+        // SVG INITIAL SETUP
+        const svg = d3.select("#graph-wrapper")
+        .append("svg")  
+            .attr('width', this.width + this.margin.left + this.margin.right)
+            .attr('height', this.height + this.margin.top + this.margin.bottom)
+        .append("g")
+            .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
+
+        // const gSvg = svg.append("g")
+        //     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+        // FORMATING DATA
+        const graphData = this.data.slice(0, this.data.length - 1); // graphData is an array of objects.  {year: 1, hair: 91, coffee: 120}, {year: 2, hair: 200, coffee: 320}, etc
+        const subgroups = Object.keys(this.data[0]).slice(1) // subgroups is an array of the different habits selected
         const groups = Array.from(Array(this.data.length).keys()).slice(1).map(n => n.toString()) // groups is an array of integers representing each year 
         const obj = d3.map(graphData, function (d) { return (d.year) })   // obj should be ok
         debugger
-
-        const x = d3.scaleLinear()
-            .domain(1, 1071) //[0, num]
-            .range([0, this.width])
-            //.padding([0.2])
-        svg.append("g")
-            .attr("transform", "translate(0," + this.height + ")")
-            .call(d3.axisBottom(x));
-            //.tickSizeOuter(0));
-
-        const y = d3.scaleLinear()
-            .domain([0, this.totalWithInterest])
-            .range([this.height, 0]);
-        svg.append("g")
-            .call(d3.axisLeft(y));
-        debugger
-        const color = d3.scaleOrdinal()
-            .domain(subgroups)
-            .range(['#e41a1c', '#377eb8', '#4daf4a', '#00e9ff', '#905caa', '#f8ff35'])
         
         const stackedData = d3.stack()
             .keys(subgroups)
             (graphData)
+        // stackedData is necessary to put bars on top of each other.
+        // debugger
         
-        const xScale = d3.scaleBand()
-            .domain(groups)
-            .rangeRound([0, this.width])
-            .padding(0.1);
+        
+        
+        
+        // AXES
 
-        const yScale = d3.scaleLinear().domain([0, (this.totalWithInterest + (this.totalWithInterest * 0.1))]).range([this.height, 0])
+        const x = d3.scaleBand()
+            .domain(groups) //[0, num]
+            .range([0, this.width])
+            //.padding([0.1])
+        svg.append("g")
+            .attr("transform", "translate(0," + this.height + ")")
+            .call(d3.axisBottom(x)); //.tickSizeOuter(0));
+
+        const y = d3.scaleLinear()
+            .domain([0, 600])
+            .range([this.height, 0]);
+        svg.append("g")
+            .call(d3.axisLeft(y));
+        // debugger
+        const color = d3.scaleOrdinal()
+            .domain(subgroups)
+            .range(['#e41a1c', '#377eb8', '#4daf4a', '#00e9ff', '#905caa', '#f8ff35'])
+        
+
+        // using xScale
+        // const xScale = d3.scaleBand()
+        //     .domain(groups)
+        //     .range([0, this.width])
+        //     .padding(0.1);
+
+        // const yScale = d3.scaleLinear()
+        //     .domain([0, (this.totalWithInterest + (this.totalWithInterest * 0.1))])
+        //     .range([this.height, 0])
         
         // from bc_example.html... will try a new approach
         debugger
@@ -79,14 +98,18 @@ export default class Graph {
             // enter a second time = loop subgroup per subgroup to add all rectangles
             .data(function (d) { return d; })
             .enter().append("rect")
+                .attr("x", function (d) { return x(d.year); })
+                .attr("y", function (d) { return y(d[1]); })
+                .attr("height", function (d) { return y(d[0]) - y(d[1]); })
+                .attr("width", x.bandwidth())
             // .attr("x", 25)
             // .attr("y", this.totalWithInterest)
             // .attr("x", function (d) { return x(d.year); })
             // .attr("y", function (d) { return y(d[1]); })
-            .attr('x', 300)
-            .attr('y', 100)
-            .attr("width", 50)
-            .attr("height", 100)
+            // .attr('x', 300)
+            // .attr('y', 100)
+            // .attr("width", 50)
+            // .attr("height", 100)
 
         // d3.select("svg").selectAll("g.bar")
         //     .data(stackedData) // Pass the sorted data in
