@@ -33,7 +33,8 @@ export default class Graph {
             .attr('width', this.width + this.margin.left + this.margin.right)
             .attr('height', this.height + this.margin.top + this.margin.bottom)
         .append("g")
-            .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
+            .attr("transform", 
+                "translate(" + this.margin.left + "," + this.margin.top + ")");
 
         // const gSvg = svg.append("g")
         //     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -44,7 +45,7 @@ export default class Graph {
         const subgroups = Object.keys(this.data[0]).slice(1) // subgroups is an array of the different habits selected
         const groups = Array.from(Array(this.data.length).keys()).slice(1).map(n => n.toString()) // groups is an array of integers representing each year 
         const obj = d3.map(graphData, function (d) { return (d.year) })   // obj should be ok
-        debugger
+        // debugger
         
         const stackedData = d3.stack()
             .keys(subgroups)
@@ -59,21 +60,22 @@ export default class Graph {
 
         const x = d3.scaleBand()
             .domain(groups) //[0, num]
-            .range([0, this.width])
-            //.padding([0.1])
+            .rangeRound([0, this.width])
+            .padding([0.2])
         svg.append("g")
             .attr("transform", "translate(0," + this.height + ")")
-            .call(d3.axisBottom(x)); //.tickSizeOuter(0));
+            .call(d3.axisBottom(x).tickSizeOuter(0));
+
 
         const y = d3.scaleLinear()
-            .domain([0, this.totalWithInterest])
+            .domain([0, this.totalWithInterest + (this.totalWithInterest * 0.05)])
             .range([this.height, 0]);
         svg.append("g")
             .call(d3.axisLeft(y));
         // debugger
         const color = d3.scaleOrdinal()
             .domain(subgroups)
-            .range(['#e41a1c', '#377eb8', '#4daf4a', '#00e9ff', '#905caa', '#f8ff35'])
+            .range(['#e41a1c', '#377eb8', '#4daf4a', '#00e9ff', '#905caa', '#f8ff35', '4cff00'])
         
 
         // using xScale
@@ -98,7 +100,7 @@ export default class Graph {
             // enter a second time = loop subgroup per subgroup to add all rectangles
             .data(function (d) { return d; })
             .enter().append("rect")
-                .attr("x", function (d) { return x(d.year); })
+            .attr("x", function (d) { return x(d.data.year); })
                 .attr("y", function (d) { return y(d[1]); })
                 .attr("height", function (d) { return y(d[0]) - y(d[1]); })
                 .attr("width", x.bandwidth())

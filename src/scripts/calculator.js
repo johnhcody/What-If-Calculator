@@ -66,92 +66,11 @@ export default class Calculator {
     }
     
     calcTotalWithInterest() {
-        // debugger
-        // let decRate = (this.rate / 100) + 1;
-        // let i = 0;
-        // let accrual;
-        // while (i < this.time) {
-            //     if (i === 0) {
-                //         accrual = (this.cont * decRate)
-                //     } else {
-                    //         accrual = ((this.cont * decRate) + (accrual * decRate));
-                    //     }
-                    //     i += 1;
-                    // }
-                    // this['totalWithInterest'] = parseFloat(this.time[this.time.length - 1].accrual)
-                    // 
-                    // this['totalWithInterest'] = accrual.toFixed(2);
-                    // console.log(accrual.toFixed(2));
                 }
                 
-                calcTotalWithoutInterest() {
-                    //console.log(this.time * this.cont);
-                    this['totalWithoutInterest'] = (this.time.length * this.cont);
-                }
-                
-            }    
-            // defineAccrual() {
-            //     this.cont = 0;
-            //     let decRate = (this.rate / 100) + 1;
-            //     
-        
-            //     if (this.coffee >= 0) {
-            //         this.coffee = this.findAccrual(coffee, 520)
-            //     } else if (this.hair >= 0) {
-            //         this.hair = this.findAccrual(hair, 91)
-            //     } else if (this.lunch >= 0) {
-            //         this.lunch = this.findAccrual(lunch, 1250)
-            //     } else if (this.cable >= 0) {
-            //         this.cable = this.findAccrual(cable, 2412)
-            //     } else if (this.save >= 0) {
-            //         this.save = this.findAccrual(save, 1200)
-            //     } else if (this.bike >= 0) {
-            //         this.bike = this.findAccrual(bike, 1000)
-            //     } else if (this.generic >= 0) {
-            //         this.generic = this.findAccrual(generic, 1040)
-            //     } 
-                 
-            // }
-            
-            
-            //assumes contributions are made at the start of each compounding period
-            
-            // calcIntYrBegin(rate, time, cont) {
-                //     rate = (rate / 100) + 1;
-                //     let i = 0;
-                //     let accrual;
-                //     while (i < time) {
-                    //         accrual = ((cont * rate) + (accrual * rate));
-                    //         i += 1;
-                    //     }
-                    //     return accrual;
-                    // }
-                    
-                    // // assumes that contributions are made at the end of each compounding period
-                    
-                    // calcIntYrEnd(rate, time, cont) {
-                        //     rate = (rate / 100) + 1;
-                        //     let i = 0;
-                        //     let accrual;
-                        //     while (i < (time - 1)) {
-                            //         accrual = ((cont * rate) + (accrual * rate));
-                            //         i += 1;
-                            //     }
-                            //     return accrual + cont;
-                            // }
-                            
-                            
-                            // // returns an object we can use with svg
-                            
-                            // constructObj(rate, time, cont) {
-                                //     rate = (rate / 100) + 1;
-                                //     let obj = {}
-                                //     let i = 0;
-                                //     let accrual;
-                                //     while (i < time) {
-                                    //         accrual = ((cont * rate) + (accrual * rate));
-                                    //         i += 1;
-                                    //         obj[i] = accrual.toFixed(2);
-                                    //     }
-                                    //     return obj;
-                                    // }
+    calcTotalWithoutInterest() {
+        //console.log(this.time * this.cont);
+        this['totalWithoutInterest'] = (this.time.length * this.cont);
+    }
+    
+}    

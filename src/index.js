@@ -115,6 +115,7 @@ function makeGraphArr(e) {
         const calc = new Calculator(obj)
         delete calc['columns']
         delete calc['rate']
+        //calc['year'] = `Year ${calc['year']}`
         return calc
         })
     // console.log('result')
