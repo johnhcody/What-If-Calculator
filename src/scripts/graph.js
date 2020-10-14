@@ -38,7 +38,7 @@ export default class Graph {
         debugger
 
         const x = d3.scaleLinear()
-            .domain(1, 1071) //[0, num]
+            .domain([1, 1071]) //[0, num]
             .range([0, this.width])
             //.padding([0.2])
         svg.append("g")
