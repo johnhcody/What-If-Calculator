@@ -49,7 +49,11 @@ export default class Graph {
             .padding([0.2])
         this.svg.append('g')
             .attr("transform", "translate(0," + this.height + ")") // looks problematic
-            .call(d3.axisBottom(x).tickSizeOuter(0));
+            .call(d3.axisBottom(x)
+            .tickSizeOuter(0))
+            .selectAll('text')
+                .attr("transform", "translate(-10,0)rotate(-45)")
+                .style("text-anchor", "end");
         
         const y = d3.sclaeLinear()
             .domain([0, max])
@@ -58,27 +62,28 @@ export default class Graph {
             .call(d3.axisLeft(y));
 
 
-        // this.data.forEach(habit => {
-        //     debugger
-        //     max += habit.totalWithInterest;
-        // })
-        //const scale = d3.scaleLinear().domain([0, max]).range([0, len]);
-        // console.log('from graph.js')
-        // console.log(max);
-        // console.log(this.data)
-
-        // Add X axis
-        // var x = d3.scaleBand()
-        //     .domain(groups) // groups is an array of the things you want to display on the x ais
-        //     .range([0, width])
-        //     .padding([0.2])
-        // svg.append("g")
-        //     .attr("transform", "translate(0," + height + ")")
-        //     .call(d3.axisBottom(x).tickSizeOuter(0));
-
-
-
-    }
+            
+            
+            
+        }
         
-}
+    }
+    
+    
+    // this.data.forEach(habit => {
+    //     debugger
+    //     max += habit.totalWithInterest;
+    // })
+    //const scale = d3.scaleLinear().domain([0, max]).range([0, len]);
+    // console.log('from graph.js')
+    // console.log(max);
+    // console.log(this.data)
 
+    // Add X axis
+    // var x = d3.scaleBand()
+    //     .domain(groups) // groups is an array of the things you want to display on the x ais
+    //     .range([0, width])
+    //     .padding([0.2])
+    // svg.append("g")
+    //     .attr("transform", "translate(0," + height + ")")
+    //     .call(d3.axisBottom(x).tickSizeOuter(0));
