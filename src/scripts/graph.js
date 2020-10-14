@@ -37,14 +37,15 @@ export default class Graph {
         const obj = d3.map(graphData, function (d) { return (d.year) })   // obj should be ok
         debugger
 
-        const x = d3.scaleBand()
-            .domain(groups) //[0, num]
+        const x = d3.scaleLinear()
+            .domain(1, 1071) //[0, num]
             .range([0, this.width])
-            .padding([0.2])
+            //.padding([0.2])
         svg.append("g")
             .attr("transform", "translate(0," + this.height + ")")
-            .call(d3.axisBottom(x).tickSizeOuter(0));
-        debugger
+            .call(d3.axisBottom(x));
+            //.tickSizeOuter(0));
+
         const y = d3.scaleLinear()
             .domain([0, this.totalWithInterest])
             .range([this.height, 0]);
@@ -59,7 +60,10 @@ export default class Graph {
             .keys(subgroups)
             (graphData)
         
-        const xScale = d3.scaleBand().rangeRound([0, this.width]).padding(0.1);
+        const xScale = d3.scaleBand()
+            .domain(groups)
+            .rangeRound([0, this.width])
+            .padding(0.1);
 
         const yScale = d3.scaleLinear().domain([0, (this.totalWithInterest + (this.totalWithInterest * 0.1))]).range([this.height, 0])
         
@@ -70,15 +74,19 @@ export default class Graph {
             // Enter in the stack data = loop key per key = group per group
             .data(stackedData)
             .enter().append("g")
-            .attr("fill", function (d) { return color(d.key); })
+            .attr("fill", 'green')
             .selectAll("rect")
             // enter a second time = loop subgroup per subgroup to add all rectangles
             .data(function (d) { return d; })
             .enter().append("rect")
-            .attr("x", function (d) { return x(d.year); })
-            .attr("y", function (d) { return y(d[1]); })
-            .attr("height", (d) => yScale(d.value))
-            .attr("width", xScale.bandwidth())
+            // .attr("x", 25)
+            // .attr("y", this.totalWithInterest)
+            // .attr("x", function (d) { return x(d.year); })
+            // .attr("y", function (d) { return y(d[1]); })
+            .attr('x', 300)
+            .attr('y', 100)
+            .attr("width", 50)
+            .attr("height", 100)
 
         // d3.select("svg").selectAll("g.bar")
         //     .data(stackedData) // Pass the sorted data in
