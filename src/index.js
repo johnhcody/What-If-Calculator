@@ -120,10 +120,15 @@ function makeGraphArr(e) {
     // console.log('result')
     // console.log(result);
     // debugger
-    result.push(habits)
+    const add = (a, b) => a + b;
+    // debugger
+    const totalWithInterest = parseInt(Object.values(result[result.length - 1]).reduce(add)) - result[result.length - 1].year
+    result.push(['year'].concat(habits))
+    // debugger
     const graph = new Graph({
         element: document.querySelector('#graph-wrapper'),
-        data: result
+        data: result,
+        totalWithInterest: totalWithInterest
     })
     }
     // debugger

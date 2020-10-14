@@ -61,11 +61,12 @@ export default class Calculator {
             // this[key] = parseFloat(accrual);
             i += 1;
         }
+
         return this[key] = parseFloat(parseFloat(accrual.toFixed(2)));
-        
     }
     
     calcTotalWithInterest() {
+        // debugger
         // let decRate = (this.rate / 100) + 1;
         // let i = 0;
         // let accrual;
@@ -77,7 +78,7 @@ export default class Calculator {
                     //     }
                     //     i += 1;
                     // }
-                    this['totalWithInterest'] = parseFloat(this.time[this.time.length - 1].accrual)
+                    // this['totalWithInterest'] = parseFloat(this.time[this.time.length - 1].accrual)
                     // 
                     // this['totalWithInterest'] = accrual.toFixed(2);
                     // console.log(accrual.toFixed(2));
