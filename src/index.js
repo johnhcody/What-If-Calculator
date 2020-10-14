@@ -104,7 +104,7 @@ function makeGraphArr(e) {
                 year: i + 1,
                 columns: habits, 
                 rate: parseInt(data.get('rate')),
-                time: parseInt(data.get('time'))
+                // time: parseInt(data.get('time'))
                 // time needs to be an array of objects year: 1, accrual: num
             }
             i += 1;
@@ -112,11 +112,15 @@ function makeGraphArr(e) {
     
     result = result.map(obj => {
         // debugger
-        return new Calculator(obj)
+        const calc = new Calculator(obj)
+        delete calc['columns']
+        delete calc['rate']
+        return calc
         })
     // console.log('result')
     // console.log(result);
     // debugger
+    result.push(habits)
     const graph = new Graph({
         element: document.querySelector('#graph-wrapper'),
         data: result

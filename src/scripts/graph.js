@@ -12,6 +12,9 @@ export default class Graph {
     }
     
     makeGraph() {
+        debugger
+        const series = d3.stack().keys(this.data[this.data.length - 1])(this.data.slice(0, this.data.length - 1))
+        debugger
             this.margin = {top: 20, right: 20, bottom: 20, left: 20};
             this.width = 600 - this.margin.left - this.margin.right; 
             this.height = 500 - this.margin.top - this.margin.bottom;
