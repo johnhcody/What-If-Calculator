@@ -111,12 +111,12 @@ function makeGraphArr(e) {
         }
     
     result = result.map(obj => {
-        debugger
+        // debugger
         return new Calculator(obj)
         })
     // console.log('result')
     // console.log(result);
-    debugger
+    // debugger
     const graph = new Graph({
         element: document.querySelector('#graph-wrapper'),
         data: result
