@@ -21,7 +21,7 @@ export default class Graph {
         
 
         // DIMENSIONS
-            this.margin = {top: 20, right: 20, bottom: 20, left: 20};
+            this.margin = {top: 20, right: 20, bottom: 20, left: 40};
             this.width = 600 - this.margin.left - this.margin.right; 
             this.height = 500 - this.margin.top - this.margin.bottom;
             this.element.innerHTML = '';
@@ -66,7 +66,7 @@ export default class Graph {
             .call(d3.axisBottom(x)); //.tickSizeOuter(0));
 
         const y = d3.scaleLinear()
-            .domain([0, 600])
+            .domain([0, this.totalWithInterest])
             .range([this.height, 0]);
         svg.append("g")
             .call(d3.axisLeft(y));
@@ -93,7 +93,7 @@ export default class Graph {
             // Enter in the stack data = loop key per key = group per group
             .data(stackedData)
             .enter().append("g")
-            .attr("fill", 'green')
+            .attr("fill", function (d) { return color(d.key); })
             .selectAll("rect")
             // enter a second time = loop subgroup per subgroup to add all rectangles
             .data(function (d) { return d; })
