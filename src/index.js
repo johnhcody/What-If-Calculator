@@ -30,7 +30,7 @@ const submission = document.getElementById('input-form')
 
 
 if (submission) {
-    submission.addEventListener('submit', makeArr)
+    submission.addEventListener('submit', makeGraphArr)
 }
 
 // function makeObj(e) {
@@ -66,6 +66,7 @@ function makeArr(e) {
     let i = 0;
     while (i < habits.length) {
         habits.forEach(habit => {
+            debugger
             result[i] = {
                 habit: habit,
                 rate: parseInt(data.get('rate')),
@@ -80,16 +81,52 @@ function makeArr(e) {
         })
     // console.log('result')
     // console.log(result);
+    debugger
     const graph = new Graph({
         element: document.querySelector('#graph-wrapper'),
         data: result
     })
+}
 
+
+function makeGraphArr(e) {
+    e.preventDefault();
+    const data = new FormData(submission)
+    //const data = e.currentTarget;
+    //console.log(...data);
+    let result = [];
+    let habits = data.getAll('habit')
+    let time = parseInt(data.get('time'))
+    let i = 0;
+    while (i < time) {
+            // debugger
+            result[i] = {
+                year: i + 1,
+                columns: habits, 
+                rate: parseInt(data.get('rate')),
+                time: parseInt(data.get('time'))
+                // time needs to be an array of objects year: 1, accrual: num
+            }
+            i += 1;
+        }
+    
+    result = result.map(obj => {
+        debugger
+        return new Calculator(obj)
+        })
+    // console.log('result')
+    // console.log(result);
+    debugger
+    const graph = new Graph({
+        element: document.querySelector('#graph-wrapper'),
+        data: result
+    })
+    }
     // debugger
     // debugger
 
     // with doo something like new Graph(result)
-}
+
 
     // for (const [key, value] of data.entries()) {
     //     //console.log(key, value);

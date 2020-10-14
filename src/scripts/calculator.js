@@ -3,14 +3,16 @@ import Graph from './graph.js';
 export default class Calculator {
     constructor(obj) {
         this.rate = obj.rate;
-        this.time = obj.time;
-        this.habit = obj.habit;
+        this.columns = obj.columns;
+        this.year = obj.year;
+        this.time = this.time;
         this.defineContribution();
     }
     // makes an array of objects w/ a key of year and yeild
     
     defineContribution() {
         this.cont = 0;
+        debugger
         switch (this.habit) {
             case 'coffee':
                 this.cont = 520;
@@ -52,10 +54,12 @@ export default class Calculator {
                 accrual = (this.cont * decRate)
              } else {
                 accrual = ((this.cont * decRate) + (accrual * decRate));
-            }    
-            result[i] = {
+            }
+            debugger    
+            this.data[i] = {
                 year: i + 1,
-                accrual: accrual.toFixed(2)
+                [this.habit]: accrual.toFixed(2).toString,
+                rate: this.rate
             }
             i += 1;
         }

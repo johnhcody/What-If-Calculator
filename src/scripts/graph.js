@@ -55,7 +55,7 @@ export default class Graph {
                 .attr("transform", "translate(-10,0)rotate(-45)")
                 .style("text-anchor", "end");
         
-        const y = d3.sclaeLinear()
+        const y = d3.scaleLinear()
             .domain([0, max])
             .range([this.height, 0])
         this.svg.append('g')
