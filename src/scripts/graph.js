@@ -17,7 +17,7 @@ export default class Graph {
 
         // DIMENSIONS
             this.margin = {top: 20, right: 20, bottom: 20, left: 60};
-            this.width = 700 - this.margin.left - this.margin.right; 
+            this.width = 850 - this.margin.left - this.margin.right; 
             this.height = 500 - this.margin.top - this.margin.bottom;
             this.element.innerHTML = '';
 
