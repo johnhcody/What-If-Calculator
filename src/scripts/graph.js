@@ -107,6 +107,17 @@ export default class Graph {
             let result = [];
             function transformText(arr) {
                 let i = 0;
+                const nums = arr.slice(arr.length / 2);
+                arr = arr.map(n => {
+                    if (typeof n === 'number') {
+                        //debugger
+                        n = parseInt(n);
+                        return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                    } else {
+                        return n.charAt(0).toUpperCase() + n.slice(1);
+                    }
+                })
+                debugger
                 while (i < (arr.length / 2)) {
                     result.push(arr[i] + ' - $' + arr[i + (arr.length / 2)])
                     //debugger
