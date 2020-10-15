@@ -93,7 +93,7 @@ function makeGraphArr(e) {
                 }
             });
             const add = (a, b) => a + b;
-            debugger
+            // debugger
             return col.reduce(add) 
         }
  

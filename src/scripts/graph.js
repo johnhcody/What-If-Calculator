@@ -65,7 +65,7 @@ export default class Graph {
             //.domain(subgroups)
             //.range(['#e41a1c', '#377eb8', '#4daf4a', '#00e9ff', '#905caa', '#f8ff35', '4cff00'])
         
-        debugger
+        // debugger
         svg.append("g")
             .selectAll("g")
             // Enter in the stack data = loop key per key = group per group
@@ -81,11 +81,12 @@ export default class Graph {
                 .attr("height", function (d) { return y(d[0]) - y(d[1]); })
                 .attr("width", x.bandwidth())
 
-        let padding = 40;
+        //let padding = 40;
         const legend = svg.append('g')
             .attr('class', 'legend')
-            .attr('transform', 'translate(' + (padding + 12) + ', 0)');
+            .attr('transform', 'translate(' + (52) + ', 0)');
  
+        
         legend.selectAll('rect')
             .data(subgroups)
             .enter()
@@ -97,12 +98,26 @@ export default class Graph {
             .attr('width', 12)
             .attr('height', 12)
             .attr('fill', function (d, i) {
-                debugger
+                //debugger
                 return lgdColor(i);
             });
+            // debugger
+            const textAndValues = subgroups.concat(Object.values(this.data[this.data.length - 2]).slice(1))
+
+            let result = [];
+            function transformText(arr) {
+                let i = 0;
+                while (i < (arr.length / 2)) {
+                    result.push(arr[i] + ' - $' + arr[i + (arr.length / 2)])
+                    //debugger
+                    i += 1
+                }
+                return result;
+            }
+            const legendText = transformText(textAndValues)
 
         legend.selectAll('text')
-            .data(subgroups)
+            .data(legendText)
             .enter()
             .append('text')
             .text(function (d) {
