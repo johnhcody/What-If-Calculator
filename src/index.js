@@ -19,7 +19,7 @@ function resetGraph() {
     let obj = {}
     new Graph({
         element: document.querySelector('#graph-wrapper'),
-        data: [],
+        data: [obj],
         totalWithInterest: 0
     })
     debugger
