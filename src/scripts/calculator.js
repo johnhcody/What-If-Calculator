@@ -52,6 +52,7 @@ export default class Calculator {
         let decRate = (this.rate / 100) + 1;
         let i = 0;
         let accrual = 0;
+        let totWithoutInt = []
         while (i < this.year) {
             if (i === 0) {
                 accrual = (cont * decRate)
@@ -60,15 +61,18 @@ export default class Calculator {
             }
             // this[key] = parseFloat(accrual);
             i += 1;
+            // this[`totalWithoutInterest${key}`] = (this.year * cont);
+            //totWithoutInt.push(this[`totalWithoutInterest${key}`])
+            //console.log(totWithoutInt);
+            //delete this[`totalWithoutInterest${key}`];
         }
-        this.calcTotalWithoutInterest(cont);
+        // this.calcTotalWithoutInterest(cont);
         return this[key] = parseFloat(parseFloat(accrual.toFixed(2)));
     }
     
     calcTotalWithoutInterest(cont) {
         //console.log(this.time * this.cont);
-        debugger
-        this['totalWithoutInterest'] = (this.year * cont);
+        // debugger
     }
     
 }    
