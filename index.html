@@ -6,27 +6,8 @@
     <link rel="stylesheet" href="./dist/main.css" />
     <script src="https://d3js.org/d3.v4.js"></script>
     <script src="./dist/main.js" defer></script>
-    
-    <!-- <script src="./src/index.js"></script> -->
-
-    <!-- <script>
-        const submission = document.getElementById('input-form')
-        
-        
-        if (submission) {
-            console.log(submission);
-            console.log('anything');
-            console.log(...submission);
-            submission.addEventListener('submit', makeArr)
-        }
-
-        function makeArr(e) {
-                e.preventDefault();
-                const data = e.currentTarget;
-                console.log('hello from makeArr')
-                console.log(...data);
-            }
-    </script> -->
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  
 
 
     <title>What If</title>
@@ -34,22 +15,23 @@
 <body>
     <div class="top-header">
         <div class="about-me">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut tortor odio. Mauris sed enim bibendum, aliquet
-            sapien a, tristique mi.  </p>
+            <ul>
+                <header>John Cody</header>
+                <a href="http://https://github.com/johnhcody"><li>Github</li></a>  
+                <a href="http://https://www.linkedin.com/in/johnhcody/"><li>LinkedIn</li></a>  
+            </ul>
         </div>
         <div class="heading-info">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut tortor odio. Mauris sed enim bibendum, aliquet
-            sapien a, tristique mi. Maecenas euismod velit vel augue suscipit, vel mattis libero ornare. Duis cursus, odio
-            vestibulum egestas feugiat, leo augue feugiat sem, et vehicula metus neque quis ligula. Pellentesque arcu eros, pulvinar
-            quis bibendum et, blandit quis nunc. Maecenas euismod velit vel augue suscipit, vel mattis libero ornare. Duis cursus, odio
-            vestibulum egestas feugiat, leo augue feugiat sem, et vehicula metus neque quis ligula. Pellentesque arcu eros, pulvinar
-            quis bibendum et, blandit quis nunc.</p>
+            <p>Have you ever wondered how much you could save over the long term if you make small adjustments to your daily habits?  
+                While some adjustments like cutting your own hair may take some time to learn the new skill, something like making coffee at home is easy to incorporate to your daily routine starting tomorrow (or today if you are reading this early enough in the morning)!</p>
+                <br>
+            <p>Take a look at the habits on the left and select one or more habits that you think you could realistically incorporate into your life, and see the magic and power of compound interest</p>
         </div>
     </div>
     <div class="body-wrapper">
         <div class="form-wrapper">
             <form id="input-form" action="">
-                <h1>Select A habit</h1>
+                <h1>Select A Habit</h1>
                     <div class="checkbox-wrapper">
                         <input type="checkbox" id="coffee" name="habit" value="coffee">
                         <label for="coffee"> Make Coffee at Home</label>
@@ -78,10 +60,12 @@
                         <input type="checkbox" id="generic" name="habit" value="generic">
                         <label for="generic">Replace Name Brands with Generic</label>
                     </div>
-                <label for="rate">Interest Rate (between 0 and 20):</label>
-                    <input type="number" id="rate" name="rate" min="0" max="20">
-                <label for="time">Years (between 1 and 100):</label>
-                    <input type="number" id="time" name="time" min="1" max="100">
+                    <div class="num-wrapper">
+                        <label for="rate">Interest Rate</label>
+                            <input type="number" id="rate" name="rate" min="0" max="20">
+                        <label for="time">Years</label>
+                            <input type="number" id="time" name="time" min="1" max="100">
+                    </div>
                 <button type="submit">Create Graph</button>
             </form>
         </div>
@@ -99,6 +83,9 @@
 
         </div>
     </div>
-    
+    <div class="footer-wrapper">
+        <p id="footer-text">
+        </p>
+    </div>
 </body>
 </html>

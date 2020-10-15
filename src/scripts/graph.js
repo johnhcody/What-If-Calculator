@@ -59,9 +59,9 @@ export default class Graph {
             .range([this.height, 0]);
         svg.append("g")
             .call(d3.axisLeft(y));
-        const color = d3.scaleOrdinal(d3.schemeCategory10);
+        const color = d3.scaleOrdinal(d3.schemePaired);
 
-        const lgdColor = d3.scaleOrdinal(d3.schemeCategory10);
+        const lgdColor = d3.scaleOrdinal(d3.schemePaired);
             //.domain(subgroups)
             //.range(['#e41a1c', '#377eb8', '#4daf4a', '#00e9ff', '#905caa', '#f8ff35', '4cff00'])
         
@@ -77,16 +77,26 @@ export default class Graph {
             .data(function (d) { return d; })
             .enter().append("rect")
             .attr("x", function (d) { return x(d.data.year); })
+                .transition()
+                .duration(800)
                 .attr("y", function (d) { return y(d[1]); })
                 .attr("height", function (d) { return y(d[0]) - y(d[1]); })
                 .attr("width", x.bandwidth())
+                .delay(function (d, i) { return (i * 100) })
 
-        //let padding = 40;
-        const legend = svg.append('g')
-            .attr('class', 'legend')
-            .attr('transform', 'translate(' + (52) + ', 0)');
- 
-        
+
+                // svg.selectAll("rect")
+                //     .transition()
+                //     .duration(800)
+                //     .attr("y", function (d) { return y(d.Value); })
+                //     .attr("height", function (d) { return height - y(d.Value); })
+                //     .delay(function (d, i) { console.log(i); return (i * 100) })
+
+                const legend = svg.append('g')
+                .attr('class', 'legend')
+                .attr('transform', 'translate(' + (52) + ', 0)');
+                
+                
         legend.selectAll('rect')
             .data(subgroups)
             .enter()
@@ -139,8 +149,14 @@ export default class Graph {
                 return i * 18;
             })
             .attr('text-anchor', 'start')
-            .attr('alignment-baseline', 'hanging');
+            .attr('alignment-baseline', 'hanging')
+            .attr('font-family', 'sans-serif')
+            .attr('fill', function (d, i) {
+                //debugger
+                return lgdColor(i);
+            });
             
+
 
 
         }
