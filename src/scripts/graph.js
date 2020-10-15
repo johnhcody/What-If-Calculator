@@ -59,9 +59,11 @@ export default class Graph {
             .range([this.height, 0]);
         svg.append("g")
             .call(d3.axisLeft(y));
-        const color = d3.scaleOrdinal()
-            .domain(subgroups)
-            .range(['#e41a1c', '#377eb8', '#4daf4a', '#00e9ff', '#905caa', '#f8ff35', '4cff00'])
+        const color = d3.scaleOrdinal(d3.schemeCategory10);
+
+        const lgdColor = d3.scaleOrdinal(d3.schemeCategory10);
+            //.domain(subgroups)
+            //.range(['#e41a1c', '#377eb8', '#4daf4a', '#00e9ff', '#905caa', '#f8ff35', '4cff00'])
         
         debugger
         svg.append("g")
@@ -79,92 +81,42 @@ export default class Graph {
                 .attr("height", function (d) { return y(d[0]) - y(d[1]); })
                 .attr("width", x.bandwidth())
 
+        let padding = 40;
+        const legend = svg.append('g')
+            .attr('class', 'legend')
+            .attr('transform', 'translate(' + (padding + 12) + ', 0)');
+ 
+        legend.selectAll('rect')
+            .data(subgroups)
+            .enter()
+            .append('rect')
+            .attr('x', 0)
+            .attr('y', function (d, i) {
+                return i * 18;
+            })
+            .attr('width', 12)
+            .attr('height', 12)
+            .attr('fill', function (d, i) {
+                debugger
+                return lgdColor(i);
+            });
+
+        legend.selectAll('text')
+            .data(subgroups)
+            .enter()
+            .append('text')
+            .text(function (d) {
+                return d;
+            })
+            .attr('x', 18)
+            .attr('y', function (d, i) {
+                return i * 18;
+            })
+            .attr('text-anchor', 'start')
+            .attr('alignment-baseline', 'hanging');
+            
+
+
         }
 }
 
-
-
-
-
-
-
-        //     const xScale = d3.scaleBand()
-        //         .domain(Object.keys(graphData[0]))
-        //         .range([0, this.width])
-        //         .padding(0.1); 
-            
-        //     debugger
-        //     const yScale = d3.scaleLinear()
-        //         .domain([0, this.totalWithInterest])
-        //         .range([this.height, 0]);
-        //     // debugger
-        //     const color = d3.scaleOrdinal()
-        //         .domain(['red', 'blue', 'green', 'yellow', 'pink', 'purple', 'gray'])
-        //         .range(d3.schemeAccent);
-
-        //     const rects = gSvg.selectAll('g').data(series).enter()
-        //         .append('g')
-        //         .attr('fill', d => color(d.key));
-
-        //     rects.selectAll('rect')
-        //         .data(d => d)
-        //         .join("rect")
-        //         .attr("x", (d, i) => xScale(d.data.category))
-        //         .attr("y", d => yScale(d[1]))
-        //         .attr("height", d => yScale(d[0]) - yScale(d[1]))
-        //         .attr("width", xScale.bandwidth())
-
-        // const xAxis = gSvg.append("g")
-        //     .attr("id", "xAxis")
-        //     .attr("transform", "translate(0," + this.height + ")")
-        //     .call(d3.axisBottom(xScale));
-
-        // const yAxis = gSvg.append("g")
-        //     .attr("id", "yAxis")
-        //     .call(d3.axisLeft(yScale));
-            
-        //     return svg.node();
-            
-    //     }
-        
-    // }
-    // addAxes() {
-    //     let max = 0; // y axis
-    //     let len = this.data[0].time.length; // x axis
-    //     let xDomainArr = [];
-    //     //debugger
-
-    //     let i = 0;
-    //     while (i < this.data.length) {
-    //         max += this.data[i].totalWithInterest;
-    //         xDomainArr.push(`Year ${(i + 1).toString()}`);
-    //         i += 1;
-    //     }
-    //     // console.log(xDomainArr);
-        
-    //     const x = d3.scaleBand()
-    //         .domain(xDomainArr)
-    //         .range([0, this.width]) // it might be this.data.length??
-    //         .padding([0.2])
-    //     this.svg.append('g')
-    //         .attr("transform", "translate(0," + this.height + ")") // looks problematic
-    //         .call(d3.axisBottom(x)
-    //         .tickSizeOuter(0))
-    //         .selectAll('text')
-    //             .attr("transform", "translate(-10,0)rotate(-45)")
-    //             .style("text-anchor", "end");
-        
-    //     const y = d3.scaleLinear()
-    //         .domain([0, max])
-    //         .range([this.height, 0])
-    //     this.svg.append('g')
-    //         .call(d3.axisLeft(y));
-
-
-            
-            
-            
-    //     }
-        
-    // }
-    

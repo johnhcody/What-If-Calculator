@@ -10,19 +10,19 @@ const submission = document.getElementById('input-form')
 const reset = document.getElementById('reset')
 
 if (reset) {
-    debugger
+    // debugger
     reset.addEventListener('click', resetGraph)
 }
 
 function resetGraph() {
-    debugger
+    // debugger
     let obj = {}
     new Graph({
         element: document.querySelector('#graph-wrapper'),
         data: [obj],
         totalWithInterest: 0
     })
-    debugger
+    // debugger
     document.getElementById("int").innerHTML = `$0`;
     document.getElementById("no-int").innerHTML = `$0`;
 }
