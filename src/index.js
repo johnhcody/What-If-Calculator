@@ -14,7 +14,7 @@ const COMPOUND_INT_QUOTES =
     '\"Knowledge and productivity are like compound interest. The more you know, the more you learn; the more you learn, the more you can do; the more you can do, the more the opportunity. I don`t want to give you a rate, but it is a very high rate. Given two people with exactly the same ability, the one person who manages day in and day out to get in one more hour of thinking will be tremendously more productive over a lifetime.\" - Richard Hamming',
     '\"It should be everyone\'s right in a capitalist system to have some way to take advantage of compound interest.\" - Katy Lederer'
 ]
-debugger
+// debugger
 
 const submission = document.getElementById('input-form')
 const reset = document.getElementById('reset')
@@ -56,12 +56,16 @@ function makeGraphArr(e) {
     let result = [];
     let habits = data.getAll('habit')
     let time = parseInt(data.get('time'))
+    let yearly = parseInt(data.get('yearly'))
+    if (yearly) habits.push('yearly');
+    debugger
     let i = 0;
     while (i < time) {
             result[i] = {
                 year: i + 1,
                 columns: habits, 
                 rate: parseInt(data.get('rate')),
+                yearly: yearly
             }
             i += 1;
         }
@@ -78,6 +82,8 @@ function makeGraphArr(e) {
 
 
         function calcTotalWithoutInt(col, year) {
+            if (col.includes('yearly')) col.pop(1);
+            debugger
             col = col.map(habit => {
                 switch(habit) {
                     case 'coffee':
@@ -109,17 +115,17 @@ function makeGraphArr(e) {
             debugger
             return col.reduce(add) 
         }
- 
-    // debugger
-    const yr = result[result.length - 1].year
-    const noInterest = calcTotalWithoutInt(col, yr);
-    const add = (a, b) => a + b;
+        debugger
+        const yr = result[result.length - 1].year
+        const noInterest = calcTotalWithoutInt(col, yr);
+        const add = (a, b) => a + b;
     const totalWithInterest = parseInt(Object.values(result[result.length - 1]).reduce(add)) - result[result.length - 1].year
     function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
+    debugger
     document.getElementById("int").innerHTML = `$ ${numberWithCommas(totalWithInterest)}`;
-    document.getElementById("no-int").innerHTML = `$ ${numberWithCommas(noInterest)}`;
+    document.getElementById("no-int").innerHTML = `$ ${numberWithCommas(noInterest + (yearly * time))}`;
     
     result.push(['year'].concat(habits))
 

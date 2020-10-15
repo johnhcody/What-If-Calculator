@@ -5,6 +5,7 @@ export default class Calculator {
         this.rate = obj.rate;
         this.columns = obj.columns;
         this.year = obj.year;
+        this.yearly = obj.yearly;
         //this.time = this.time;
         this.makeNewKeys();
     }
@@ -35,6 +36,9 @@ export default class Calculator {
                     break;
                 case 'generic':
                     value = 1040;
+                    break;
+                case 'yearly':
+                    value = this.yearly;
                     break;
                 default:
                     break;
