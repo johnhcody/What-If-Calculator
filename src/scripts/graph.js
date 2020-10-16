@@ -44,7 +44,7 @@ export default class Graph {
         // stackedData is necessary to put bars on top of each other.
         
         // AXES
-
+ 
         const x = d3.scaleBand()
             .domain(groups) //[0, num]
             .rangeRound([0, this.width])
