@@ -5,6 +5,7 @@ export default class Calculator {
         this.rate = obj.rate;
         this.columns = obj.columns;
         this.year = obj.year;
+        this.custom = obj.custom;
         this.customTime = obj.customTime;
         this.customMult = obj.customMult;
         //this.time = this.time;
@@ -14,7 +15,8 @@ export default class Calculator {
     
     makeNewKeys() {
         let value;
-        // debugger
+        debugger
+        let customVal = this.custom * this.customMult;
         this.columns.map(habit => {
             switch (habit) {
                 case 'coffee':
@@ -38,8 +40,9 @@ export default class Calculator {
                 case 'generic':
                     value = 1040;
                     break;
-                case 'custom':
-                    value = this.customTime * this.customMult;
+                case 'customTime':
+                    debugger
+                    value = customVal;
                     break;
                 default:
                     break;

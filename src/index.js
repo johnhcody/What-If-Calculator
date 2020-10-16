@@ -110,6 +110,7 @@ function makeGraphArr(e) {
             delete calc['columns']
             delete calc['rate']
             delete calc['customMult']
+            delete calc['custom']
             return calc
         })
     } else {
@@ -121,6 +122,7 @@ function makeGraphArr(e) {
             delete calc['rate']
             delete calc['customMult']
             delete calc['customTime']
+            delete calc['custom']
             return calc
             })
     }
