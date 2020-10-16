@@ -17,7 +17,6 @@
   "author": "mrcjbradley",
   "license": "ISC",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.15.1",
     "d3": "^6.2.0",
     "d3-scale": "^3.2.3"
   },
