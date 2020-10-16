@@ -1,6 +1,7 @@
 
 $green: #22912f;
 
+
 .top-header {
     display: flex;
     p {
@@ -15,7 +16,7 @@ $green: #22912f;
     font-family: sans-serif;
     padding: 14px 29px 0px 29px;
     a {
-        text-decoration-line: none;
+        text-decoration: none;
     }
     header {
         color: $green;
@@ -23,11 +24,15 @@ $green: #22912f;
         font-weight: 600;
     }
     li {
-        padding: 7px;
+        margin: 12px 0px 0px 9px;
         color: black;
+        position: relative;
+        border-bottom: 2px solid white;
         &:hover {
+            color: $green;
             border-bottom: 2px solid $green;
         }
+
     }
 }
 
@@ -226,4 +231,9 @@ $green: #22912f;
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+#myBtn {
+    margin-bottom: 50px;
+    text-decoration: none;
 }

@@ -190,7 +190,6 @@ function makeGraphArr(e) {
     })
 }
 
-// Get the modal
 const modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
@@ -215,4 +214,11 @@ window.onclick = function (event) {
         modal.style.display = "none";
     }
 }
-   
+
+function openModal() {
+
+}
+
+function closeModal() {
+
+}
