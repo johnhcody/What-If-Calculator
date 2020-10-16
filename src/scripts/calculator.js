@@ -1,5 +1,3 @@
-import Graph from './graph.js';
-
 export default class Calculator {
     constructor(obj) {
         this.rate = obj.rate;
@@ -8,14 +6,12 @@ export default class Calculator {
         this.custom = obj.custom;
         this.customTime = obj.customTime;
         this.customMult = obj.customMult;
-        //this.time = this.time;
         this.makeNewKeys();
     }
     // makes an array of objects w/ a key of year and yeild
     
     makeNewKeys() {
         let value;
-        // debugger
         let customVal = this.custom * this.customMult;
         this.columns.map(habit => {
             switch (habit) {
@@ -41,17 +37,13 @@ export default class Calculator {
                     value = 1040;
                     break;
                 case 'customTime':
-                    // debugger
                     value = customVal;
                     break;
                 default:
                     break;
             }
-            // 
             this[habit] = this.findAccrual(habit, value);
         })
-        // 
-        //  this.defineAccrual();
     }
 
     
@@ -60,23 +52,15 @@ export default class Calculator {
         let decRate = (this.rate / 100) + 1;
         let i = 0;
         let accrual = 0;
-        let totWithoutInt = []
         while (i < this.year) {
             if (i === 0) {
                 accrual = (cont * decRate)
              } else {
                  accrual = ((cont * decRate) + (accrual * decRate));
             }
-            // this[key] = parseFloat(accrual);
             i += 1;
         }
-        // this.calcTotalWithoutInterest(cont);
-        return this[key] = parseFloat(parseFloat(accrual.toFixed(2)));
-    }
-    
-    calcTotalWithoutInterest(cont) {
-        //console.log(this.time * this.cont);
-        // debugger
+        return this[key] = parseInt(accrual);
     }
     
 }    

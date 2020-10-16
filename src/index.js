@@ -20,10 +20,7 @@ const submission = document.getElementById('input-form')
 const reset = document.getElementById('reset')
 
 if (reset) {
-    // debugger
     reset.addEventListener('click', resetGraph)
-
-
 }
 
 
@@ -40,9 +37,6 @@ function resetGraph() {
     document.getElementById("graph-wrapper").innerHTML = '';
 }
 
-
-
-
 function selectQuote(e) {
     e.preventDefault();
     document.getElementById("footer-text").innerHTML = COMPOUND_INT_QUOTES[Math.floor(Math.random() * COMPOUND_INT_QUOTES.length)];
@@ -51,6 +45,7 @@ function selectQuote(e) {
 
 
 function makeGraphArr(e) {
+    // handle form submission
     e.preventDefault();
     const data = new FormData(submission)
     let result = [];
@@ -59,7 +54,6 @@ function makeGraphArr(e) {
     let custom = parseInt(data.get('custom'))
     let customTime = data.get('custom-time')
     if (isNaN(custom) === true) customTime = null;
-    debugger
     if (customTime) habits.push('customTime');
     let customMult = 0;
     if (customTime === 'daily') {
@@ -70,11 +64,12 @@ function makeGraphArr(e) {
         customMult = 1;
     }
     
+
+    // maps an array that will be sent to the calculator
+
     let i = 0;
-    debugger
     if (isNaN(custom) !== true) {
         while (i < time) {
-                // debugger
                 result[i] = {
                     year: i + 1,
                     columns: habits, 
@@ -83,27 +78,23 @@ function makeGraphArr(e) {
                     customTime: customTime,
                     customMult: customMult
                 }
-                // custom: number-input
                 i += 1;
             }
     } else {
         while (i < time) {
-            // debugger
             result[i] = {
                 year: i + 1,
                 columns: habits,
                 rate: parseInt(data.get('rate')),
             }
-            // custom: number-input
             i += 1;
         }
     }
 
-    let col = [];
-    debugger
+    // formats the data in a way that the graph can handle (must be an array of objects with no unecessary keys)
     // if the custom field is empty (isNaN(custom) !== true) evaluates to false
+    let col = [];
     if (isNaN(custom) !== true) {
-        debugger
         result = result.map(obj => {
             const calc = new Calculator(obj)
             col = calc['columns']
@@ -114,8 +105,7 @@ function makeGraphArr(e) {
             return calc
         })
     } else {
-        result = result.map(obj => {
-            debugger      
+        result = result.map(obj => {    
             const calc = new Calculator(obj)
             col = calc['columns']
             delete calc['columns']
@@ -127,13 +117,8 @@ function makeGraphArr(e) {
             })
     }
 
-    console.log(col);
-
-
-
+    // calculates total without interest by grabbing the year and a predefined value and multiplying.  CustomTime is handled separately so the value is set to zero.  If it is not zero, then it will error out when we add the array using .reduce()
         function calcTotalWithoutInt(col, year) {
-            // if (col.includes('customTime')) col = col.filter(function (value) { return value !== 'customTime' })
-            debugger
             col = col.map(habit => {
                 switch(habit) {
                     case 'coffee':
@@ -165,18 +150,20 @@ function makeGraphArr(e) {
                 }
             });
             const add = (a, b) => a + b;
-            debugger
             return col.reduce(add) 
         }
-        debugger
+
         const yr = result[result.length - 1].year
         const noInterest = calcTotalWithoutInt(col, yr);
         const add = (a, b) => a + b;
     const totalWithInterest = parseInt(Object.values(result[result.length - 1]).reduce(add)) - result[result.length - 1].year
+
+    // used to display noInterest and interest
     function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
-    debugger
+
+    // interpolates the value of the last element of the array
     document.getElementById("int").innerHTML = `$ ${numberWithCommas(totalWithInterest)}`;
     if (isNaN(custom) !== false) {
         document.getElementById("no-int").innerHTML = `$ ${numberWithCommas(noInterest)}`
