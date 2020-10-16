@@ -132,7 +132,7 @@ function makeGraphArr(e) {
 
 
         function calcTotalWithoutInt(col, year) {
-            if (col.includes('customTime')) col = col.filter(function (value) { return value !== 'customTime' })
+            // if (col.includes('customTime')) col = col.filter(function (value) { return value !== 'customTime' })
             debugger
             col = col.map(habit => {
                 switch(habit) {
@@ -156,6 +156,9 @@ function makeGraphArr(e) {
                             return habit;
                         case 'generic':
                             habit = 1040 * year;
+                            return habit;
+                        case 'customTime':
+                            habit = 0;
                             return habit;
                         default:
                             break;

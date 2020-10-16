@@ -15,7 +15,7 @@ export default class Calculator {
     
     makeNewKeys() {
         let value;
-        debugger
+        // debugger
         let customVal = this.custom * this.customMult;
         this.columns.map(habit => {
             switch (habit) {
@@ -41,7 +41,7 @@ export default class Calculator {
                     value = 1040;
                     break;
                 case 'customTime':
-                    debugger
+                    // debugger
                     value = customVal;
                     break;
                 default:

@@ -28,6 +28,7 @@ $green: #22912f;
         color: black;
         position: relative;
         border-bottom: 2px solid white;
+        padding-bottom: 3px;
         &:hover {
             color: $green;
             border-bottom: 2px solid $green;
@@ -158,6 +159,7 @@ $green: #22912f;
         font-size: 21px;
         font-weight: 600;
         outline: 0;
+        border-bottom: 4px solid white;
         &:hover {
             border-bottom: 4px solid $green;
         }
