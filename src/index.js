@@ -22,10 +22,15 @@ const reset = document.getElementById('reset')
 if (reset) {
     // debugger
     reset.addEventListener('click', resetGraph)
+
+
 }
 
 function resetGraph() {
     // debugger
+    document.getElementById("int").innerHTML = '';
+    document.getElementById("no-int").innerHTML = '';
+    document.getElementById("input-form").reset();
     let obj = {}
     new Graph({
         element: document.querySelector('#graph-wrapper'),
@@ -33,8 +38,6 @@ function resetGraph() {
         totalWithInterest: 0
     })
     // debugger
-    document.getElementById("int").innerHTML = `$0`;
-    document.getElementById("no-int").innerHTML = `$0`;
 }
 
 
