@@ -74,6 +74,9 @@ $green: #22912f;
     display: flex;
     flex-direction: column;
     align-items: center;
+    label {
+        margin: 9px 0px 6px 0px;
+    }
 }
 
 .form-wrapper {
@@ -92,6 +95,14 @@ $green: #22912f;
     input[type=number] {
         max-width: 50px;
         outline: none;
+    }
+}
+
+.custom-num-wrapper {
+    display: flex;
+    p {
+        margin-top: 12px;
+        margin-right: 6px;
     }
 }
 
