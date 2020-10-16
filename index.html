@@ -28,12 +28,18 @@
     <div id="myModal2" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <p>The </p>
-            <br>
-            <p>You may be surprised to learn how much small adjustments to your daily routines can affect your long term savings</p>
-            <br>
-            <p>Take a look at the habits on the left and select one or more habits that you think you could realistically
-                incorporate into your life, and see the magic and power of compound interest</p>
+            <div class="info-modal-header">
+                <h1>So you want to know where the data comes from?</h1>
+                <h2>Below are a list of calculations with some estimations based on research I conducted.  All values are calculated on an annual basis and the sources are linked to help you understand how I came to each estimate.</h2>
+            </div>
+            <div class="sources">
+                <a href="https://www.lazymanandmoney.com/brewing-coffee-home-vs-coffee-shop/?__cf_chl_jschl_tk__=534737c37e8ed1ded59d739a9533f104514214a7-1602876220-0-AQUVHkdfxC0GoteiBoqA73mhPuZ4BaAMn_sVK-vpBZ5E7u7jbyU-LSvAw50CHzQiAjoQ65nGeiBuUqDHgjxoF0B1mp15dNii9-TzPguCL-gQE4bnmoflLLBP-_kUwQBkRom_ax3jraCzQZX17ayI-VXwRCrAwYqDkyzh8pvfkH3UfpJe9fB6P82yLTiFBtuLxeDZEHRkNx84etrOyjIFnNoJkZJgw2_TSGYWXLPxlBE4tfuMscYKSuz8zLiezCvDtqipciGkbjGKT_rgPzQYUt3sh61DblmyWayzdnmGwws6kGcI0QuERaDc0DMjLMvoh9NWy5dbwgaZb-gn5Gna1Ww-DEnRa7CTsE4pnqBbAp4c4v8Mp3SfngbTkn-9fqurVg" target="_blank" ><li>Coffee: $427/yr</li></a>
+                <a href="https://towardsdatascience.com/analyzing-who-spends-more-on-haircuts-men-or-women-a90003e98312" target="_blank"><li>Haircuts: ((Average Male Haircut Cost + Average Female Haircut Cost) / 2) - ($20/year for a haircutting kit) = $112/yr</li></a>
+                <a href="https://www.makingsenseofcents.com/2017/11/does-bringing-lunch-to-work-actually-save-money.html#:~:text=But%2C%20bringing%20lunch%20to%20work,know%20what%20you%20are%20doing.&text=Just%20like%20the%20cost%20of,of%20bringing%20it%20from%20home." target="_blank"><li>Packing a Lunch: $1200/yr</li></a>
+                <a href="https://decisiondata.org/news/report-the-average-cable-bill-now-exceeds-all-other-household-utility-bills-combined/" target="_blank"><li>Replacing Cable with Streaming: (Average Cable Package - $20 Streaming Service) = $2412/yr</li></a>
+                <a href="https://www.cnbc.com/2018/05/18/biking-to-work-could-save-you-over-1000-a-year.html" target="_blank"><li>Biking to Work: $1000/yr</li></a>
+                <a href="https://www.daveramsey.com/blog/buying-generic-groceries-saves-money" target="_blank"><li>Buying Generic Brands: ($20/week x 52 weeks/yr) = $1040/yr</li></a>
+            </div>
         </div>
     </div>
     <div class="top-header">
@@ -107,6 +113,9 @@
                         </div>
                     </div>
                 <button type="submit">Create Graph</button>
+                <div id="info-btn-wrapper">
+                    <button id="myBtn2">Where does the data come from?</button>
+                </div>
             </form>
         </div>
         <div id="graph-wrapper">
@@ -114,7 +123,6 @@
         <div class="result-form-wrapper">
             <div class="right-bar">
                 <button id="myBtn">How does it work?</button>
-                <button id="myBtn2">Where's the data?</button>
                 <h1>Totals</h1>
                 <h2>With Interest:</h2>
                 <p id="int"></p>

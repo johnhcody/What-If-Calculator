@@ -122,13 +122,13 @@ function makeGraphArr(e) {
             col = col.map(habit => {
                 switch(habit) {
                     case 'coffee':
-                            habit = 520 * year;
+                            habit = 427 * year;
                             return habit;
                         case 'hair':
-                            habit = 91 * year;
+                            habit = 112 * year;
                             return habit;
                         case 'lunch':
-                            habit = 1250 * year;
+                            habit = 1200 * year;
                             return habit;
                         case 'cable':
                             habit = 2412 * year;
@@ -183,51 +183,42 @@ function makeGraphArr(e) {
 const modal = document.getElementById("myModal");
 const infoModal = document.getElementById("myModal2");
 
-// Get the button that opens the modal
 const btn = document.getElementById("myBtn");
 const infoBtn = document.getElementById("myBtn2");
 
-// Get the <span> element that closes the modal
 const span = document.getElementsByClassName("close")[0];
+const infoSpan = document.getElementsByClassName("close")[1];
 
-// When the user clicks the button, open the modal 
 btn.onclick = function (event, modal) {
-    debugger
     modal = document.getElementById("myModal");
     openModal(event, modal);
-    // modal.style.display = "block";
 }
 
-infoBtn.onclick = function (event, infoModal) {
-    openModal(event, infoModal);
-    // modal.style.display = "block";
+infoBtn.onclick = function (event, modal) {
+    modal = document.getElementById("myModal2");
+    openModal(event, modal);
 }
 
-// When the user clicks on <span> (x), close the modal
 span.onclick = function (event, modal) {
-    debugger
-    document.getElementsByClassName('modal')
     closeModal(event, modal);
-    //modal.style.display = "none";
 }
-// could add a || statement, but I don't like that
+
+infoSpan.onclick = function (event, modal) {
+    closeModal(event, modal);
+}
+
+
 window.onclick = function (event) {
-    debugger
     if (event.target == modal || event.target == infoModal) {
         event.target.style.display = "none";
     }
 }
 
 function openModal(event, modal) {
-    debugger
-    //event.currentTarget.style.display = "block";
     modal.style.display = "block";
 }
 
 function closeModal() {
-    debugger
-    //document.getElementById(`${modal}`).style.display
-    //event.currentTarget.style.display = "none";
     const modal = Object.values(document.getElementsByClassName('modal'));
     modal.map(mod => {
         return mod.style.display = "none";

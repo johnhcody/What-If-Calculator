@@ -16,13 +16,13 @@ export default class Calculator {
         this.columns.map(habit => {
             switch (habit) {
                 case 'coffee':
-                    value = 520;
+                    value = 427;
                     break;
                 case 'hair':
-                    value = 91;
+                    value = 112;
                     break;
                 case 'lunch':
-                    value = 1250;
+                    value = 1200;
                     break;
                 case 'cable':
                     value = 2412;
