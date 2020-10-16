@@ -251,16 +251,22 @@ $green: #22912f;
 }
 
 #info-btn-wrapper button {
-    font-size: 12px;
-    border-bottom: none;
+        color: $green;
+        font-size: 12px;
+        background-color: white;
+        padding: 7px 0px 7px 0px;
+        border-radius: 7px;
     &:hover {
-        border-bottom: none;
+        color: white;
+        background-color: $green;
+        padding: 7px 0px 7px 0px;
     }
 }
 
 #myModal2 {
     font-family: sans-serif;
 }
+
 
 .info-modal-header {
     h1 {

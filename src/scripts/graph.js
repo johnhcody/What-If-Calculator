@@ -53,7 +53,6 @@ export default class Graph {
             .attr("transform", "translate(0," + this.height + ")")
             .call(d3.axisBottom(x).tickSizeOuter(0));
 
-
         const y = d3.scaleLinear()
             .domain([0, this.totalWithInterest + (this.totalWithInterest * 0.05)])
             .range([this.height, 0]);
@@ -62,10 +61,8 @@ export default class Graph {
         const color = d3.scaleOrdinal(d3.schemePaired);
 
         const lgdColor = d3.scaleOrdinal(d3.schemePaired);
-            //.domain(subgroups)
-            //.range(['#e41a1c', '#377eb8', '#4daf4a', '#00e9ff', '#905caa', '#f8ff35', '4cff00'])
         
-        // debugger
+        
         svg.append("g")
             .selectAll("g")
             // Enter in the stack data = loop key per key = group per group
@@ -84,13 +81,6 @@ export default class Graph {
                 .attr("width", x.bandwidth())
                 .delay(function (d, i) { return (i * 100) })
 
-
-                // svg.selectAll("rect")
-                //     .transition()
-                //     .duration(800)
-                //     .attr("y", function (d) { return y(d.Value); })
-                //     .attr("height", function (d) { return height - y(d.Value); })
-                //     .delay(function (d, i) { console.log(i); return (i * 100) })
 
                 const legend = svg.append('g')
                 .attr('class', 'legend')
@@ -133,7 +123,7 @@ export default class Graph {
                         }
                     }
                 })
-                // debugger
+                
                 while (i < (arr.length / 2)) {
                     result.push(arr[i] + ' - $' + arr[i + (arr.length / 2)])
                     //debugger
