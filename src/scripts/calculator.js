@@ -5,7 +5,8 @@ export default class Calculator {
         this.rate = obj.rate;
         this.columns = obj.columns;
         this.year = obj.year;
-        this.yearly = obj.yearly;
+        this.customTime = obj.customTime;
+        this.customMult = obj.customMult;
         //this.time = this.time;
         this.makeNewKeys();
     }
@@ -13,7 +14,7 @@ export default class Calculator {
     
     makeNewKeys() {
         let value;
-        
+        // debugger
         this.columns.map(habit => {
             switch (habit) {
                 case 'coffee':
@@ -37,8 +38,8 @@ export default class Calculator {
                 case 'generic':
                     value = 1040;
                     break;
-                case 'yearly':
-                    value = this.yearly;
+                case 'custom':
+                    value = this.customTime * this.customMult;
                     break;
                 default:
                     break;
@@ -65,10 +66,6 @@ export default class Calculator {
             }
             // this[key] = parseFloat(accrual);
             i += 1;
-            // this[`totalWithoutInterest${key}`] = (this.year * cont);
-            //totWithoutInt.push(this[`totalWithoutInterest${key}`])
-            //console.log(totWithoutInt);
-            //delete this[`totalWithoutInterest${key}`];
         }
         // this.calcTotalWithoutInterest(cont);
         return this[key] = parseFloat(parseFloat(accrual.toFixed(2)));

@@ -56,33 +56,81 @@ function makeGraphArr(e) {
     let result = [];
     let habits = data.getAll('habit')
     let time = parseInt(data.get('time'))
-    let yearly = parseInt(data.get('yearly'))
-    if (yearly) habits.push('yearly');
+    let custom = parseInt(data.get('custom'))
+    let customTime = data.get('custom-time')
+    if (isNaN(custom) === true) customTime = null;
     debugger
+    if (customTime) habits.push('customTime');
+    let customMult = 0;
+    if (customTime === 'daily') {
+        customMult = 365;
+    } else if (customTime === 'monthly') {
+        customMult = 12;
+    } else if (customTime === 'yearly') {
+        customMult = 1;
+    }
+    
     let i = 0;
-    while (i < time) {
+    debugger
+    if (isNaN(custom) !== true) {
+        while (i < time) {
+                // debugger
+                result[i] = {
+                    year: i + 1,
+                    columns: habits, 
+                    rate: parseInt(data.get('rate')),
+                    custom: custom,
+                    customTime: customTime,
+                    customMult: customMult
+                }
+                // custom: number-input
+                i += 1;
+            }
+    } else {
+        while (i < time) {
+            // debugger
             result[i] = {
                 year: i + 1,
-                columns: habits, 
+                columns: habits,
                 rate: parseInt(data.get('rate')),
-                yearly: yearly
             }
+            // custom: number-input
             i += 1;
         }
+    }
+
     let col = [];
-    result = result.map(obj => {      
-        const calc = new Calculator(obj)
-        col = calc['columns']
-        delete calc['columns']
-        delete calc['rate']
-        return calc
+    debugger
+    // if the custom field is empty (isNaN(custom) !== true) evaluates to false
+    if (isNaN(custom) !== true) {
+        debugger
+        result = result.map(obj => {
+            const calc = new Calculator(obj)
+            col = calc['columns']
+            delete calc['columns']
+            delete calc['rate']
+            delete calc['customMult']
+            return calc
         })
+    } else {
+        result = result.map(obj => {
+            debugger      
+            const calc = new Calculator(obj)
+            col = calc['columns']
+            delete calc['columns']
+            delete calc['rate']
+            delete calc['customMult']
+            delete calc['customTime']
+            return calc
+            })
+    }
+
     console.log(col);
 
 
 
         function calcTotalWithoutInt(col, year) {
-            if (col.includes('yearly')) col.pop(1);
+            if (col.includes('customTime')) col = col.filter(function (value) { return value !== 'customTime' })
             debugger
             col = col.map(habit => {
                 switch(habit) {
@@ -125,10 +173,14 @@ function makeGraphArr(e) {
     }
     debugger
     document.getElementById("int").innerHTML = `$ ${numberWithCommas(totalWithInterest)}`;
-    document.getElementById("no-int").innerHTML = `$ ${numberWithCommas(noInterest + (yearly * time))}`;
+    if (isNaN(custom) !== false) {
+        document.getElementById("no-int").innerHTML = `$ ${numberWithCommas(noInterest)}`
+    } else {
+        document.getElementById("no-int").innerHTML = `$ ${numberWithCommas(noInterest + ((custom * customMult) * time))}`;
+    }
     
     result.push(['year'].concat(habits))
-
+    data
     const graph = new Graph({
         element: document.querySelector('#graph-wrapper'),
         data: result,

@@ -36,7 +36,7 @@ export default class Graph {
         const subgroups = Object.keys(this.data[0]).slice(1) // subgroups is an array of the different habits selected
         const groups = Array.from(Array(this.data.length).keys()).slice(1).map(n => n.toString()) // groups is an array of integers representing each year 
         const obj = d3.map(graphData, function (d) { return (d.year) })   // obj should be ok
-        // debugger
+        debugger
         
         const stackedData = d3.stack()
             .keys(subgroups)
@@ -118,16 +118,22 @@ export default class Graph {
             function transformText(arr) {
                 let i = 0;
                 const nums = arr.slice(arr.length / 2);
+                // debugger
                 arr = arr.map(n => {
                     if (typeof n === 'number') {
                         //debugger
                         n = parseInt(n);
                         return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                     } else {
-                        return n.charAt(0).toUpperCase() + n.slice(1);
+                        debugger
+                        if (n === 'customTime') {
+                            return 'Custom Input'
+                        } else {
+                            return n.charAt(0).toUpperCase() + n.slice(1);
+                        }
                     }
                 })
-                debugger
+                // debugger
                 while (i < (arr.length / 2)) {
                     result.push(arr[i] + ' - $' + arr[i + (arr.length / 2)])
                     //debugger
