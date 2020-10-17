@@ -62,6 +62,8 @@ function makeGraphArr(e) {
         customMult = 12;
     } else if (customTime === 'yearly') {
         customMult = 1;
+    } else if (customTime === 'weekly') {
+        customMult = 52;
     }
     
 
@@ -131,7 +133,7 @@ function makeGraphArr(e) {
                             habit = 1200 * year;
                             return habit;
                         case 'cable':
-                            habit = 2412 * year;
+                            habit = 2369 * year;
                             return habit;
                         case 'save':
                             habit = 1200 * year;

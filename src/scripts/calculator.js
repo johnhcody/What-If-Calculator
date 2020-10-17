@@ -25,7 +25,7 @@ export default class Calculator {
                     value = 1200;
                     break;
                 case 'cable':
-                    value = 2412;
+                    value = 2369;
                     break;
                 case 'save':
                     value = 1200;

@@ -10,16 +10,19 @@ export default class Graph {
         this.element = obj.element;
         this.data = obj.data;
         this.totalWithInterest = obj.totalWithInterest; 
+        this.drawDimensions();
+    }
+    
+    drawDimensions() {
+        this.margin = {top: 20, right: 20, bottom: 20, left: 60};
+        this.width = 850 - this.margin.left - this.margin.right; 
+        this.height = 500 - this.margin.top - this.margin.bottom;
+        this.element.innerHTML = '';
+        
         this.makeGraph();
     }
     
     makeGraph() {
-
-        // DIMENSIONS
-            this.margin = {top: 20, right: 20, bottom: 20, left: 60};
-            this.width = 850 - this.margin.left - this.margin.right; 
-            this.height = 500 - this.margin.top - this.margin.bottom;
-            this.element.innerHTML = '';
 
 
         // SVG INITIAL SETUP
@@ -36,7 +39,6 @@ export default class Graph {
         const subgroups = Object.keys(this.data[0]).slice(1) // subgroups is an array of the different habits selected
         const groups = Array.from(Array(this.data.length).keys()).slice(1).map(n => n.toString()) // groups is an array of integers representing each year 
         const obj = d3.map(graphData, function (d) { return (d.year) })   // obj should be ok
-        debugger
         
         const stackedData = d3.stack()
             .keys(subgroups)
