@@ -180,6 +180,10 @@ function makeGraphArr(e) {
     })
 }
 
+
+// MODALS
+
+
 const modal = document.getElementById("myModal");
 const infoModal = document.getElementById("myModal2");
 
@@ -188,6 +192,9 @@ const infoBtn = document.getElementById("myBtn2");
 
 const span = document.getElementsByClassName("close")[0];
 const infoSpan = document.getElementsByClassName("close")[1];
+
+
+
 
 btn.onclick = function (event, modal) {
     modal = document.getElementById("myModal");
@@ -209,8 +216,16 @@ infoSpan.onclick = function (event, modal) {
 
 
 window.onclick = function (event) {
-    if (event.target == modal || event.target == infoModal) {
-        event.target.style.display = "none";
+
+    switch (event.target) {
+        case modal:
+            event.target.style.display = "none";
+            break;
+        case infoModal:
+            event.target.style.display = "none";
+            break;
+        default:
+            break;
     }
 }
 
