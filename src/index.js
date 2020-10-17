@@ -180,6 +180,10 @@ function makeGraphArr(e) {
         data: result,
         totalWithInterest: totalWithInterest
     })
+
+    const reset = document.getElementsByClassName('reset-btn')[0];
+
+    reset.style.display = "block";
 }
 
 
