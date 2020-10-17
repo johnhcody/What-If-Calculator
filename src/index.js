@@ -52,7 +52,11 @@ function makeGraphArr(e) {
     let habits = data.getAll('habit')
     let time = parseInt(data.get('time'))
     let custom = parseInt(data.get('custom'))
-    let customTime = data.get('custom-time')
+    let customTime = data.get('custom-time');
+    let rate = data.get('rate');
+    debugger
+    if (rate === '') rate = 0;
+    rate = parseInt(rate);
     if (isNaN(custom) === true) customTime = null;
     if (customTime) habits.push('customTime');
     let customMult = 0;
@@ -75,7 +79,7 @@ function makeGraphArr(e) {
                 result[i] = {
                     year: i + 1,
                     columns: habits, 
-                    rate: parseInt(data.get('rate')),
+                    rate: rate,
                     custom: custom,
                     customTime: customTime,
                     customMult: customMult
