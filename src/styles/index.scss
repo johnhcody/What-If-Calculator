@@ -98,8 +98,9 @@ $green: #22912f;
     max-width: 200px;
     padding-left: 20px;
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
     input {
-        margin: 8px 0px 5px 0px;
+        margin: 6px 0px 4px 0px;
     }
     label {
         margin: 15px 0px 0px 0px;
@@ -188,10 +189,14 @@ $green: #22912f;
     font-family: sans-serif;
 }
 
-.custom-rate-wrapper {
-    margin: 7px 0px 0px 0px;
+#custom-rate-wrapper {
+        margin: 7px 0px 0px 0px;
     label {
-    margin: 0px 5px 0px 0px;
+        margin: 0px 5px 0px 0px;
+    }
+    h1 {
+        font-size: 13px;
+        margin: 15px 0px 10px 0px;
     }
 }
 
