@@ -59,7 +59,14 @@ export default class Graph {
             .domain([0, this.totalWithInterest + (this.totalWithInterest * 0.05)])
             .range([this.height, 0]);
         svg.append("g")
-            .call(d3.axisLeft(y));
+            .call(d3.axisLeft(y))
+            .append("text")
+                .attr("transform", "rotate(-90)")
+                .attr("y", 6)
+                .attr("dy", "0.71em")
+                .attr("text-anchor", "end")
+                .attr("fill", "#5D6971")
+                .text("Amount of Savings with Interest ($)");;
         const color = d3.scaleOrdinal(d3.schemePaired);
 
         const lgdColor = d3.scaleOrdinal(d3.schemePaired);
