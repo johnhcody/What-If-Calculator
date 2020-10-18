@@ -45,16 +45,34 @@ export default class Graph {
             (graphData)
         // stackedData is necessary to put bars on top of each other.
         
-        // AXES
- 
+        // AXESß
+        debugger
+
+        function addYears(numArr) {
+            result = numArr.map(num => {
+                return "Year " + num;
+            })
+            return result;
+        }
+
+        const xAxisText = addYears(groups); // array with year and number combines for each tick on x axis
+
         const x = d3.scaleBand()
             .domain(groups) //[0, num]
             .rangeRound([0, this.width])
             .padding([0.2])
         svg.append("g")
             .attr("transform", "translate(0," + this.height + ")")
-            .call(d3.axisBottom(x).tickSizeOuter(0));
-
+            .call(d3.axisBottom(x).tickSizeOuter(0))
+                .append('text')
+                // attempt to display year + num at an angle
+                //.tickFormat((d, i) => xAxisText[i])
+                // .selectAll("text")
+                // .style("text-anchor", "end")
+                // .attr("dx", "-.8em")
+                // .attr("dy", ".15em")
+                // .attr("transform", "rotate(-65)")
+                
         const y = d3.scaleLinear()
             .domain([0, this.totalWithInterest + (this.totalWithInterest * 0.05)])
             .range([this.height, 0]);
@@ -63,7 +81,7 @@ export default class Graph {
             .append("text")
                 .attr("transform", "rotate(-90)")
                 .attr("y", 6)
-                .attr("dy", "0.71em")
+                .attr("dy", "0.8em")
                 .attr("text-anchor", "end")
                 .attr("fill", "#5D6971")
                 .text("Amount of Savings with Interest ($)");;
