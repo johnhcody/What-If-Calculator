@@ -38,7 +38,8 @@
             i += 1;
         }
         return this[key] = parseInt(accrual);
-    } ```
+    } 
+ ```
     
 ### How I calculated the cost of each habit (with Links to Sources):  
 
