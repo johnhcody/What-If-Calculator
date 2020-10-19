@@ -132,6 +132,14 @@ export default class Graph {
             const textAndValues = subgroups.concat(Object.values(this.data[this.data.length - 2]).slice(1))
 
             let result = [];
+
+            // REGEX: 
+            // '\B' looks for the first occurance of 3 digits that is not at the beginning of the string
+            // '?=' followed by (\d{3})+(?!\d))
+            // '\d' does a global search for digits
+            // {} is a quantifier...in this case it is looking for exactly 3 digits 
+            // (?!\d))/g, ",") ?!
+            // ?! is a negative lookahead in this case lookking at digits, and /g is doing a global search of all of this
             function transformText(arr) {
                 let i = 0;
                 const nums = arr.slice(arr.length / 2);
