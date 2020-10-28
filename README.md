@@ -5,9 +5,41 @@
 ### To Use this Application:
 
  - Navigate to the Live Link
- - Check off boxes of habits you feel you could implement into your life.
- - Input the amount of interest you expect to receive (Between 0% and 20% compounded annually)
- - Click the "Create Graph" Button and see the results come to life!
+   - Step 1: Select one or more habits (Or input your daily, weekly, or monthly habits)
+   - Step 2: Input an interest rate 
+   - Step 3: Input the number of years you would like to caclulate
+   - Step 4: Click "Create Graph"
+ - Click "Reset" and do it again!
+
+ 
+ ### Demo:
+ 
+
+
+![what-if-demo.gif](https://github.com/johnhcody/What-If-Calculator/blob/master/src/images/what-if-demo.gif?raw=true)
+
+  
+### Finding the accrual:
+
+This was the first step in building the application.  Having an algorithm that was accurate with various inputs and could create data in a way that was readable for the D3.js graph proved to be challenging.  The method takes in a habit and a contribution.  The contribution is a pre-determined value (the explanation of how each value was found can be found below), and the return value is a new key in the object that will be sent to the Graph Object.  The key has a value of the accrual that is specific to the contribution, the rate, and the amount of time. 
+ 
+ 
+ ``` findAccrual(habit, contribution) {
+        let decimalRate = (this.rate / 100) + 1;
+        let i = 0;
+        let accrual = 0;
+        while (i < this.year) {
+            if (i === 0) {
+                accrual = (contribution * decimalRate)
+             } else {
+                 accrual = ((contribution * decimalRate) + (accrual * decimalRate));
+            }
+            i += 1;
+        }
+        return this[habit] = parseInt(accrual);
+    } 
+ ```
+    
  
 ### Technologies Implemented:
 
@@ -15,37 +47,8 @@
  - Javascript
  - SCSS
  
- 
- ### Demo:
- 
- - Step 1: Select one or more habits (Or input your daily, weekly, or monthly habits)
- - Step 2: Input an interest rate 
- - Step 3: Input the number of years you would like to caclulate
- - Step 4: Click "Create Graph"
- 
 
-![what-if-demo.gif](https://github.com/johnhcody/What-If-Calculator/blob/master/src/images/what-if-demo.gif?raw=true)
 
-  
-### Finding the accrual:
- 
- 
- ``` findAccrual(key, cont) {
-        let decRate = (this.rate / 100) + 1;
-        let i = 0;
-        let accrual = 0;
-        while (i < this.year) {
-            if (i === 0) {
-                accrual = (cont * decRate)
-             } else {
-                 accrual = ((cont * decRate) + (accrual * decRate));
-            }
-            i += 1;
-        }
-        return this[key] = parseInt(accrual);
-    } 
- ```
-    
 ### How I calculated the cost of each habit (with Links to Sources):  
 
 - [Coffee: $427/yr](https://www.lazymanandmoney.com/brewing-coffee-home-vs-coffee-shop/?__cf_chl_jschl_tk__=534737c37e8ed1ded59d739a9533f104514214a7-1602876220-0-AQUVHkdfxC0GoteiBoqA73mhPuZ4BaAMn_sVK-vpBZ5E7u7jbyU-LSvAw50CHzQiAjoQ65nGeiBuUqDHgjxoF0B1mp15dNii9-TzPguCL-gQE4bnmoflLLBP-_kUwQBkRom_ax3jraCzQZX17ayI-VXwRCrAwYqDkyzh8pvfkH3UfpJe9fB6P82yLTiFBtuLxeDZEHRkNx84etrOyjIFnNoJkZJgw2_TSGYWXLPxlBE4tfuMscYKSuz8zLiezCvDtqipciGkbjGKT_rgPzQYUt3sh61DblmyWayzdnmGwws6kGcI0QuERaDc0DMjLMvoh9NWy5dbwgaZb-gn5Gna1Ww-DEnRa7CTsE4pnqBbAp4c4v8Mp3SfngbTkn-9fqurVg)
