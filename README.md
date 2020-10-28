@@ -18,8 +18,8 @@
  
  ### Demo:
  
- - Step 1: Select a habit
- - Step 2: Input an interest rate
+ - Step 1: Select one or more habits (Or input your daily, weekly, or monthly habits)
+ - Step 2: Input an interest rate 
  - Step 3: Input the number of years you would like to caclulate
  - Step 4: Click "Create Graph"
  
