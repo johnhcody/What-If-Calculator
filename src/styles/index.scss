@@ -228,11 +228,6 @@ $green: #22912f;
   border: 1px solid #888;
   width: 80%;
   border-radius: 9px;
-  p {
-    font-family: sans-serif;
-    padding: 27px;
-    line-height: 1.4;
-   }
 }
 
 /* The Close Button */
@@ -315,4 +310,20 @@ $green: #22912f;
     text-align: center;
     color: red;
     display: none;
+}
+
+.modal-text-and-gif {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    ul {
+        padding: 42px 20px 25px 20px;
+    }
+    li {
+        padding: 0px 0px 10px 0px;
+        font-family: sans-serif;
+    }
+    img {
+        max-height: 550px;
+    }
 }
