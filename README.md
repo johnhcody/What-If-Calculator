@@ -18,9 +18,9 @@
  
  ### Demo:
  
-[![what-if-demo.gif](https://i.postimg.cc/FRdDSd4v/what-if-demo.gif)](https://postimg.cc/62KrJQqb)
- 
- 
+
+![what-if-demo.gif](https://github.com/johnhcody/What-If-Calculator/blob/master/src/images/what-if-demo.gif?raw=true)
+
   
 ### Finding the accrual:
  
