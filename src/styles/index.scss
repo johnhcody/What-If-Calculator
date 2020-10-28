@@ -183,8 +183,8 @@ $green: #22912f;
 }
 
 #footer-text {
-    display: flex;
-    justify-content: center;
+    display: block;
+    text-align: center;
     padding-top: 15px;
     font-family: sans-serif;
 }
@@ -311,3 +311,8 @@ $green: #22912f;
     display: none;
 }
 
+#error {
+    text-align: center;
+    color: red;
+    display: none;
+}

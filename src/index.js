@@ -50,6 +50,14 @@ function makeGraphArr(e) {
     const data = new FormData(submission)
     let result = [];
     let habits = data.getAll('habit')
+    if (habits.length === 0) {
+        document.getElementById('error').style.display = "block";
+        document.getElementById("footer-text").style.display ="none";
+        return;
+    } else {
+        document.getElementById('error').style.display = "none";
+        document.getElementById("footer-text").style.display = "block";
+    }
     let time = parseInt(data.get('time'))
     let custom = parseInt(data.get('custom'))
     let customTime = data.get('custom-time');
