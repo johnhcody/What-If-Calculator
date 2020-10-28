@@ -49,19 +49,19 @@ export default class Calculator {
 
     
     
-    findAccrual(key, cont) {
-        let decRate = (this.rate / 100) + 1;
+    findAccrual(habit, contribution) {
+        let decimalRate = (this.rate / 100) + 1;
         let i = 0;
         let accrual = 0;
         while (i < this.year) {
             if (i === 0) {
-                accrual = (cont * decRate)
+                accrual = (contribution * decimalRate)
              } else {
-                 accrual = ((cont * decRate) + (accrual * decRate));
+                 accrual = ((contribution * decimalRate) + (accrual * decimalRate));
             }
             i += 1;
         }
-        return this[key] = parseInt(accrual);
+        return this[habit] = parseInt(accrual);
     }
     
 }    
