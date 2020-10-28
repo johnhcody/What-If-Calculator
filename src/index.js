@@ -50,7 +50,8 @@ function makeGraphArr(e) {
     const data = new FormData(submission)
     let result = [];
     let habits = data.getAll('habit')
-    if (habits.length === 0) {
+    debugger
+    if (habits.length === 0 && data.get('custom') === "") {
         document.getElementById('error').style.display = "block";
         document.getElementById("footer-text").style.display ="none";
         return;
