@@ -13,6 +13,7 @@ export default class Calculator {
     makeNewKeys() {
         let value;
         let customVal = this.custom * this.customMult;
+        if (this.year === 0) this.columns.map(habit => this[habit] = 0)
         this.columns.map(habit => {
             switch (habit) {
                 case 'coffee':
@@ -42,7 +43,7 @@ export default class Calculator {
                 default:
                     break;
             }
-            this[habit] = this.findAccrual(habit, value);
+            if (this.year > 0) this[habit] = this.findAccrual(habit, value);
         })
     }
 

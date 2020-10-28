@@ -14,7 +14,7 @@ const COMPOUND_INT_QUOTES =
     '\"Knowledge and productivity are like compound interest. The more you know, the more you learn; the more you learn, the more you can do; the more you can do, the more the opportunity. I don`t want to give you a rate, but it is a very high rate. Given two people with exactly the same ability, the one person who manages day in and day out to get in one more hour of thinking will be tremendously more productive over a lifetime.\" - Richard Hamming',
     '\"It should be everyone\'s right in a capitalist system to have some way to take advantage of compound interest.\" - Katy Lederer'
 ]
-// debugger
+
 
 const submission = document.getElementById('input-form')
 const reset = document.getElementById('reset')
@@ -54,10 +54,8 @@ function makeGraphArr(e) {
     let custom = parseInt(data.get('custom'))
     let customTime = data.get('custom-time');
     let rate = data.get('rate');
-    debugger
     if (rate === '') rate = 0;
     rate = parseFloat(rate);
-    debugger
     if (isNaN(custom) === true) customTime = null;
     if (customTime) habits.push('customTime');
     let customMult = 0;
@@ -76,8 +74,9 @@ function makeGraphArr(e) {
 
     let i = 0;
     if (isNaN(custom) !== true) {
+        result[0] = {year: 0, columns: habits, rate: 0, custom: custom, customTime: customTime, customMult: customMult}
         while (i < time) {
-                result[i] = {
+                result[i + 1] = {
                     year: i + 1,
                     columns: habits, 
                     rate: rate,
@@ -89,7 +88,8 @@ function makeGraphArr(e) {
             }
     } else {
         while (i < time) {
-            result[i] = {
+            result[0] = { year: 0, columns: habits, rate: 0}
+            result[i + 1] = {
                 year: i + 1,
                 columns: habits,
                 rate: parseFloat(data.get('rate')),

@@ -37,7 +37,7 @@ export default class Graph {
         // FORMATING DATA
         const graphData = this.data.slice(0, this.data.length - 1); // graphData is an array of objects.  {year: 1, hair: 91, coffee: 120}, {year: 2, hair: 200, coffee: 320}, etc
         const subgroups = Object.keys(this.data[0]).slice(1) // subgroups is an array of the different habits selected
-        const groups = Array.from(Array(this.data.length).keys()).slice(1).map(n => n.toString()) // groups is an array of integers representing each year 
+        const groups = Array.from(Array(this.data.length - 1).keys()).map(n => n.toString()) // groups is an array of integers representing each year 
         const obj = d3.map(graphData, function (d) { return (d.year) })   // obj should be ok
         
         const stackedData = d3.stack()
@@ -56,7 +56,7 @@ export default class Graph {
         }
 
         const xAxisText = addYears(groups); // array with year and number combines for each tick on x axis
-
+        debugger
         const x = d3.scaleBand()
             .domain(groups) //[0, num]
             .rangeRound([0, this.width])
@@ -150,7 +150,6 @@ export default class Graph {
                         n = parseInt(n);
                         return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                     } else {
-                        debugger
                         if (n === 'customTime') {
                             return 'Custom Input'
                         } else {
